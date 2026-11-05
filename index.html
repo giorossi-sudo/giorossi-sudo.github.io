@@ -39,6 +39,7 @@
       font-size: clamp(2.5rem, 6vw, 5rem);
     }
   </style>
+  <script src="projects.js" defer></script>
 </head>
 <body class="bg-bg text-ink font-body leading-[1.6] min-h-screen antialiased selection:bg-accent selection:text-surface">
 
@@ -79,41 +80,182 @@
         <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted">Work in progress</span>
       </div>
 
-      <!-- Card Progetto Esempio -->
-      <article class="bg-surface border border-line rounded-[12px] transition-[border-color,transform] duration-150 ease-out hover:border-accent hover:-translate-y-[2px]">
-        <div class="grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center">
-          <div>
-            <span class="font-mono uppercase tracking-[0.05em] text-xs text-accent block mb-3">Demo / Showcase</span>
-            <h3 class="font-heading text-2xl md:text-3xl font-semibold text-ink tracking-[-0.02em] leading-[1.07] mb-4">Benvenuto nel mio spazio progetti</h3>
-            <p class="text-muted text-base mb-8">
-              Questo sito è collegato al dominio <code class="font-mono tracking-[0.05em] text-xs text-ink border border-line px-1.5 py-0.5">giorossi-sudo.tech</code> 
-              e ospitato direttamente su GitHub Pages. Aggiungeremo qui schermate, anteprime e descrizioni non tecniche delle tue repository!
-            </p>
-            <div class="flex flex-wrap gap-2 mb-8">
-              <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">GitHub Pages</span>
-              <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">TailwindCSS</span>
-              <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Showcase</span>
-            </div>
-            <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">
-              Scopri il codice su GitHub &rarr;
-            </a>
-          </div>
-
-          <div class="bg-placeholderBg rounded-[8px] p-8 border border-dashed border-placeholderBorder flex flex-col items-center justify-center text-center min-h-[240px]">
-            <svg class="w-10 h-10 text-muted mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-            <p class="font-mono uppercase tracking-[0.05em] text-xs text-ink">Spazio per Screenshot / Mockup</p>
-            <p class="text-xs text-muted mt-1.5">Caricheremo qui le anteprime visive delle tue app</p>
-          </div>
-        </div>
-      </article>
+      <!-- Lista Progetti generata dinamicamente da projects.js -->
+      <div id="projects-list" class="space-y-12"></div>
     </section>
   </main>
 
   <footer class="border-t border-line mt-12 py-10 text-center font-mono tracking-[0.05em] text-xs text-muted">
     &copy; 2026 giorossi-sudo.tech &bull; Hosted with GitHub Pages
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('projects-list');
+      if (!container) return;
+
+      function createImagePlaceholder() {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'bg-placeholderBg rounded-[8px] p-8 border border-dashed border-placeholderBorder flex flex-col items-center justify-center text-center min-h-[240px]';
+
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('class', 'w-10 h-10 text-muted mb-3');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('viewBox', '0 0 24 24');
+
+        const path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('d', 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z');
+        svg.appendChild(path);
+
+        const title = document.createElement('p');
+        title.className = 'font-mono uppercase tracking-[0.05em] text-xs text-ink';
+        title.textContent = 'Anteprima non disponibile';
+
+        const subtitle = document.createElement('p');
+        subtitle.className = 'text-xs text-muted mt-1.5';
+        subtitle.textContent = 'Screenshot in arrivo';
+
+        wrapper.append(svg, title, subtitle);
+        return wrapper;
+      }
+
+      function createDefaultPlaceholderCard() {
+        const article = document.createElement('article');
+        article.className = 'bg-surface border border-line rounded-[12px] transition-[border-color,transform] duration-150 ease-out hover:border-accent hover:-translate-y-[2px]';
+
+        const grid = document.createElement('div');
+        grid.className = 'grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center';
+
+        const contentCol = document.createElement('div');
+
+        const badge = document.createElement('span');
+        badge.className = 'font-mono uppercase tracking-[0.05em] text-xs text-accent block mb-3';
+        badge.textContent = 'Demo / Showcase';
+
+        const h3 = document.createElement('h3');
+        h3.className = 'font-heading text-2xl md:text-3xl font-semibold text-ink tracking-[-0.02em] leading-[1.07] mb-4';
+        h3.textContent = 'Benvenuto nel mio spazio progetti';
+
+        const desc = document.createElement('p');
+        desc.className = 'text-muted text-base mb-8';
+        desc.appendChild(document.createTextNode('Questo sito è collegato al dominio '));
+        const code = document.createElement('code');
+        code.className = 'font-mono tracking-[0.05em] text-xs text-ink border border-line px-1.5 py-0.5';
+        code.textContent = 'giorossi-sudo.tech';
+        desc.appendChild(code);
+        desc.appendChild(document.createTextNode(' e ospitato direttamente su GitHub Pages. Aggiungeremo qui schermate, anteprime e descrizioni non tecniche delle tue repository!'));
+
+        const tagsWrapper = document.createElement('div');
+        tagsWrapper.className = 'flex flex-wrap gap-2 mb-8';
+        ['GitHub Pages', 'TailwindCSS', 'Showcase'].forEach((tag) => {
+          const span = document.createElement('span');
+          span.className = 'font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1';
+          span.textContent = tag;
+          tagsWrapper.appendChild(span);
+        });
+
+        const link = document.createElement('a');
+        link.href = 'https://github.com/giorossi-sudo';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150';
+        link.textContent = 'Scopri il codice su GitHub \u2192';
+
+        contentCol.append(badge, h3, desc, tagsWrapper, link);
+        grid.append(contentCol, createImagePlaceholder());
+        article.appendChild(grid);
+        return article;
+      }
+
+      function createProjectCard(project) {
+        const article = document.createElement('article');
+        article.className = 'bg-surface border border-line rounded-[12px] transition-[border-color,transform] duration-150 ease-out hover:border-accent hover:-translate-y-[2px]';
+
+        const grid = document.createElement('div');
+        grid.className = 'grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center';
+
+        const contentCol = document.createElement('div');
+
+        const h3 = document.createElement('h3');
+        h3.className = 'font-heading text-2xl md:text-3xl font-semibold text-ink tracking-[-0.02em] leading-[1.07] mb-4';
+        h3.textContent = project.title || '';
+        contentCol.appendChild(h3);
+
+        const desc = document.createElement('p');
+        desc.className = 'text-muted text-base mb-8';
+        desc.textContent = project.description || '';
+        contentCol.appendChild(desc);
+
+        if (Array.isArray(project.tags) && project.tags.length > 0) {
+          const tagsWrapper = document.createElement('div');
+          tagsWrapper.className = 'flex flex-wrap gap-2 mb-8';
+          project.tags.forEach((tag) => {
+            const span = document.createElement('span');
+            span.className = 'font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1';
+            span.textContent = tag;
+            tagsWrapper.appendChild(span);
+          });
+          contentCol.appendChild(tagsWrapper);
+        }
+
+        const linksWrapper = document.createElement('div');
+        linksWrapper.className = 'flex flex-wrap items-center gap-6';
+
+        if (project.repoUrl) {
+          const repoLink = document.createElement('a');
+          repoLink.href = project.repoUrl;
+          repoLink.target = '_blank';
+          repoLink.rel = 'noopener noreferrer';
+          repoLink.className = 'inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150';
+          repoLink.textContent = 'Scopri il codice su GitHub \u2192';
+          linksWrapper.appendChild(repoLink);
+        }
+
+        if (project.demoUrl) {
+          const demoLink = document.createElement('a');
+          demoLink.href = project.demoUrl;
+          demoLink.target = '_blank';
+          demoLink.rel = 'noopener noreferrer';
+          demoLink.className = 'inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150';
+          demoLink.textContent = 'Apri la demo \u2192';
+          linksWrapper.appendChild(demoLink);
+        }
+
+        contentCol.appendChild(linksWrapper);
+        grid.appendChild(contentCol);
+
+        if (project.image) {
+          const img = document.createElement('img');
+          img.src = project.image;
+          img.alt = project.imageAlt || project.title || '';
+          img.loading = 'lazy';
+          img.className = 'w-full aspect-[16/10] object-cover rounded-lg border border-line';
+          img.onerror = () => {
+            img.replaceWith(createImagePlaceholder());
+          };
+          grid.appendChild(img);
+        } else {
+          grid.appendChild(createImagePlaceholder());
+        }
+
+        article.appendChild(grid);
+        return article;
+      }
+
+      if (typeof PROJECTS === 'undefined' || !Array.isArray(PROJECTS) || PROJECTS.length === 0) {
+        container.appendChild(createDefaultPlaceholderCard());
+        return;
+      }
+
+      PROJECTS.forEach((project) => {
+        container.appendChild(createProjectCard(project));
+      });
+    });
+  </script>
 </body>
 </html>
