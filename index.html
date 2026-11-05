@@ -4,88 +4,169 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>giorossi-sudo | Project Showcase</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: {
+          heading: ['"Bricolage Grotesque"', 'serif'],
+          body: ['"Instrument Sans"', 'sans-serif'],
+          mono: ['"DM Mono"', 'monospace'],
+        },
+        extend: {
+          colors: {
+            bg: '#FAFAF7',
+            surface: '#FFFFFF',
+            ink: '#111111',
+            muted: '#5F5F5A',
+            line: '#E6E6E0',
+            accent: '#E8461E',
+            placeholderBg: '#F2F2EC',
+            placeholderBorder: '#D8D8D0',
+          },
+          maxWidth: {
+            container: '1100px',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    code, pre { font-family: 'JetBrains Mono', monospace; }
+    :root {
+      --color-bg: #FAFAF7;
+      --color-surface: #FFFFFF;
+      --color-text-primary: #111111;
+      --color-text-secondary: #5F5F5A;
+      --color-border: #E6E6E0;
+      --color-accent: #E8461E;
+      --color-placeholder-bg: #F2F2EC;
+      --color-placeholder-border: #D8D8D0;
+      --font-heading: 'Bricolage Grotesque', serif;
+      --font-body: 'Instrument Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .font-heading-style {
+      font-family: var(--font-heading);
+      letter-spacing: -0.02em;
+      line-height: 1.07;
+    }
+
+    .h1-clamp {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .label-mono {
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+    }
+
+    code, pre {
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+
+    .card-interactive {
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .card-interactive:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    .link-transition {
+      transition: color 180ms ease, border-color 180ms ease;
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
+<body class="bg-bg text-ink font-body min-h-screen antialiased selection:bg-accent selection:text-surface">
 
   <!-- Header / Hero -->
-  <header class="border-b border-slate-800/80 bg-slate-900/40 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+  <header class="border-b border-line bg-bg">
+    <div class="max-w-container mx-auto px-6 py-6 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <span class="inline-block w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-bold text-lg tracking-tight text-white font-mono">giorossi-sudo.tech</span>
+        <span class="inline-block w-2.5 h-2.5 bg-accent"></span>
+        <span class="font-heading font-bold text-lg text-ink font-heading-style">giorossi-sudo.tech</span>
       </div>
       <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" 
-         class="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition">
+         class="inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-line underline-offset-4 hover:text-accent hover:decoration-accent link-transition">
         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub Profile
       </a>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 py-16">
+  <main class="max-w-container mx-auto px-6">
     <!-- Intro -->
-    <section class="max-w-3xl mb-16">
-      <div class="inline-block px-3 py-1 mb-4 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-semibold tracking-wide border border-indigo-500/20">
+    <section class="max-w-4xl py-24 md:py-32">
+      <div class="label-mono text-muted mb-6">
         Project Showcase & Visual Documentation
       </div>
-      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-6">
+      <h1 class="font-heading font-bold text-ink h1-clamp mb-8">
         Dietro le quinte dei miei progetti.
       </h1>
-      <p class="text-lg text-slate-400 leading-relaxed">
-        Su GitHub trovi il codice sorgente, qui trovi <strong>la visione</strong>: cosa risolvono, 
+      <p class="text-lg md:text-xl text-muted font-normal max-w-2xl">
+        Su GitHub trovi il codice sorgente, qui trovi <strong class="font-medium text-ink">la visione</strong>: cosa risolvono, 
         come funzionano visivamente e le anteprime pratiche di quello che ho sviluppato.
       </p>
     </section>
 
     <!-- Grid Progetti (Placeholder elegante pronto ad accogliere i tuoi progetti) -->
-    <section class="space-y-12">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-        <h2 class="text-xl font-bold text-slate-200">Progetti in evidenza</h2>
-        <span class="text-xs text-slate-500 font-mono">Work in progress</span>
+    <section class="py-24 border-t border-line space-y-12">
+      <div class="flex items-baseline justify-between border-b border-line pb-5">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold text-ink">Progetti in evidenza</h2>
+        <span class="label-mono text-muted">Work in progress</span>
       </div>
 
       <!-- Card Progetto Esempio -->
-      <article class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition">
-        <div class="grid md:grid-cols-2 gap-8 p-8 items-center">
+      <article class="bg-surface border border-line rounded-[12px] card-interactive">
+        <div class="grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center">
           <div>
-            <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Demo / Showcase</span>
-            <h3 class="text-2xl font-bold text-white mt-1 mb-3">Benvenuto nel mio spazio progetti</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6">
-              Questo sito è collegato al dominio <code class="text-indigo-400 bg-indigo-950/60 px-2 py-0.5 rounded text-xs">giorossi-sudo.tech</code> 
+            <span class="label-mono text-accent block mb-3">Demo / Showcase</span>
+            <h3 class="font-heading text-2xl md:text-3xl font-semibold text-ink mb-4">Benvenuto nel mio spazio progetti</h3>
+            <p class="text-muted text-base mb-8">
+              Questo sito è collegato al dominio <code class="label-mono text-ink border border-line px-1.5 py-0.5">giorossi-sudo.tech</code> 
               e ospitato direttamente su GitHub Pages. Aggiungeremo qui schermate, anteprime e descrizioni non tecniche delle tue repository!
             </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="text-xs font-medium bg-slate-800 text-slate-300 px-3 py-1 rounded-md">GitHub Pages</span>
-              <span class="text-xs font-medium bg-slate-800 text-slate-300 px-3 py-1 rounded-md">TailwindCSS</span>
-              <span class="text-xs font-medium bg-slate-800 text-slate-300 px-3 py-1 rounded-md">Showcase</span>
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="label-mono text-muted border border-line px-3 py-1">GitHub Pages</span>
+              <span class="label-mono text-muted border border-line px-3 py-1">TailwindCSS</span>
+              <span class="label-mono text-muted border border-line px-3 py-1">Showcase</span>
             </div>
             <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition">
+               class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent link-transition">
               Scopri il codice su GitHub &rarr;
             </a>
           </div>
 
-          <div class="bg-gradient-to-tr from-indigo-900/40 via-purple-900/20 to-slate-800/50 rounded-xl p-8 border border-slate-800/80 flex flex-col items-center justify-center text-center min-h-[220px]">
-            <svg class="w-12 h-12 text-indigo-400/80 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-placeholderBg rounded-[8px] p-8 border border-dashed border-placeholderBorder flex flex-col items-center justify-center text-center min-h-[240px]">
+            <svg class="w-10 h-10 text-muted mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>
-            <p class="text-xs font-medium text-slate-300">Spazio per Screenshot / Mockup</p>
-            <p class="text-[11px] text-slate-500 mt-1">Caricheremo qui le anteprime visive delle tue app</p>
+            <p class="label-mono text-ink">Spazio per Screenshot / Mockup</p>
+            <p class="text-xs text-muted mt-1.5">Caricheremo qui le anteprime visive delle tue app</p>
           </div>
         </div>
       </article>
     </section>
   </main>
 
-  <footer class="border-t border-slate-900 mt-20 py-8 text-center text-xs text-slate-500">
+  <footer class="border-t border-line mt-12 py-10 text-center label-mono text-muted">
     &copy; 2026 giorossi-sudo.tech &bull; Hosted with GitHub Pages
   </footer>
 </body>
