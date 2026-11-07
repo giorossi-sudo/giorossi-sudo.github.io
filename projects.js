@@ -8,4 +8,12 @@ const PROJECTS = [
     image: "assets/hyprland-desktop.webp",
     imageAlt: "Desktop Hyprland su Fedora con barre Waybar in alto e in basso",
   },
+  {
+    title: "XFCE Dotfiles per PC datati",
+    description: "Una configurazione del desktop XFCE4 su Arch Linux pensata per computer datati e poco potenti, nata per un HP compact con monitor collegato in VGA. Corregge i difetti tipici dello schermo analogico, come i pulsanti delle finestre tagliati sul bordo, e alleggerisce il carico sul processore per mantenere il sistema fluido. Parte dal tema del team di EndeavourOS e uno script la installa in un solo passaggio.",
+    tags: ["XFCE4", "Arch Linux", "Low-spec", "Dotfiles"],
+    repoUrl: "https://github.com/giorossi-sudo/xfce-dotfiles",
+    image: "assets/xfce-desktop.webp",
+    imageAlt: "Desktop XFCE4 su Arch Linux con pannello e icone Papirus scure"
+  }
 ];
