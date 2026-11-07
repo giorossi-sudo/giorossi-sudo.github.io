@@ -1,4 +1,6 @@
-tailwind.config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./index.html", "./404.html", "./articoli/*.html"],
   theme: {
     fontFamily: {
       heading: ['"Bricolage Grotesque"', 'sans-serif'],
@@ -20,5 +22,6 @@ tailwind.config = {
         container: '1100px',
       }
     }
-  }
+  },
+  plugins: [],
 };

@@ -5,11 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XFCE Dotfiles per PC datati | giorossi-sudo.tech</title>
   <meta name="description" content="Configurazione XFCE4 su Arch Linux per un vecchio computer desktop: fix per monitor VGA, icone Papirus e ottimizzazioni per hardware a basso consumo.">
+  <meta name="theme-color" content="#FAFAF7">
+  <link rel="canonical" href="https://giorossi-sudo.tech/articoli/xfce-dotfiles.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="XFCE Dotfiles per PC datati | giorossi-sudo.tech">
+  <meta property="og:description" content="Configurazione XFCE4 su Arch Linux per un vecchio computer desktop: fix per monitor VGA, icone Papirus e ottimizzazioni per hardware a basso consumo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://giorossi-sudo.tech/articoli/xfce-dotfiles.html">
+  <meta property="og:image" content="https://giorossi-sudo.tech/assets/og-image.png">
+  <meta property="og:locale" content="it_IT">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="XFCE Dotfiles per PC datati | giorossi-sudo.tech">
+  <meta name="twitter:description" content="Configurazione XFCE4 su Arch Linux per un vecchio computer desktop: fix per monitor VGA, icone Papirus e ottimizzazioni per hardware a basso consumo.">
+  <meta name="twitter:image" content="https://giorossi-sudo.tech/assets/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../theme.js"></script>
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body class="bg-bg text-ink font-body leading-[1.6] min-h-screen antialiased selection:bg-accent selection:text-surface">
 
@@ -37,17 +49,21 @@
     </div>
 
     <article>
-      <div class="font-mono uppercase tracking-[0.05em] text-xs text-muted mb-3">
+      <div class="font-mono uppercase tracking-[0.05em] text-xs text-muted mb-1">
         Guida e approfondimento
       </div>
+      <p class="text-xs text-muted mb-4">
+        Aggiornato a novembre 2026
+      </p>
       <h1 class="font-heading font-bold text-3xl md:text-4xl text-ink tracking-[-0.02em] leading-[1.15] mb-6">
         XFCE Dotfiles per PC datati
       </h1>
 
       <img src="../assets/xfce-desktop.webp" 
            alt="Desktop XFCE4 su Arch Linux con pannello e icone Papirus scure" 
-           class="w-full aspect-[16/10] object-cover rounded-lg border border-line mb-10" 
-           loading="lazy">
+           width="1600" 
+           height="1000" 
+           class="w-full aspect-[16/10] object-cover rounded-lg border border-line mb-10">
 
       <!-- Cos'è e perché esiste -->
       <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: inherit;
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid #C2370F;
+    outline-offset: 3px;
+  }
+
+  .h1-clamp {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+  }
+}

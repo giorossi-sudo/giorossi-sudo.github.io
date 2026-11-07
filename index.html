@@ -4,17 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>giorossi-sudo | Project Showcase</title>
+  <meta name="description" content="Studente di Informatica e appassionato di Linux: anteprime e approfondimenti dei miei progetti, tra dotfiles, desktop leggeri e configurazioni.">
+  <meta name="theme-color" content="#FAFAF7">
+  <link rel="canonical" href="https://giorossi-sudo.tech/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="giorossi-sudo | Project Showcase">
+  <meta property="og:description" content="Studente di Informatica e appassionato di Linux: anteprime e approfondimenti dei miei progetti, tra dotfiles, desktop leggeri e configurazioni.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://giorossi-sudo.tech/">
+  <meta property="og:image" content="https://giorossi-sudo.tech/assets/og-image.png">
+  <meta property="og:locale" content="it_IT">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="giorossi-sudo | Project Showcase">
+  <meta name="twitter:description" content="Studente di Informatica e appassionato di Linux: anteprime e approfondimenti dei miei progetti, tra dotfiles, desktop leggeri e configurazioni.">
+  <meta name="twitter:image" content="https://giorossi-sudo.tech/assets/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="theme.js"></script>
-  <style>
-    .h1-clamp {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-    }
-  </style>
-  <script src="projects.js" defer></script>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="bg-bg text-ink font-body leading-[1.6] min-h-screen antialiased selection:bg-accent selection:text-surface">
 
@@ -37,7 +44,7 @@
     <!-- Intro -->
     <section class="max-w-4xl py-24 md:py-32">
       <div class="font-mono uppercase tracking-[0.05em] text-xs text-muted mb-6">
-        Project Showcase & Visual Documentation
+        Studente di Informatica · Linux
       </div>
       <h1 class="font-heading font-bold text-ink h1-clamp tracking-[-0.02em] leading-[1.1] text-balance mb-8">
         Dietro le quinte dei miei progetti.
@@ -48,15 +55,56 @@
       </p>
     </section>
 
-    <!-- Grid Progetti (Placeholder elegante pronto ad accogliere i tuoi progetti) -->
+    <!-- Grid Progetti -->
     <section id="progetti" class="py-24 border-t border-line space-y-12">
-      <div class="flex items-baseline justify-between border-b border-line pb-5">
+      <div class="border-b border-line pb-5">
         <h2 class="font-heading text-2xl md:text-3xl font-bold text-ink tracking-[-0.02em] leading-[1.07]">Progetti in evidenza</h2>
-        <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted">Work in progress</span>
       </div>
 
-      <!-- Lista Progetti generata dinamicamente da projects.js -->
-      <div id="projects-list" class="space-y-12"></div>
+      <!-- Lista Progetti -->
+      <div class="space-y-12">
+        <!-- Progetto 1: Fedora Hyprland Dotfiles -->
+        <article class="bg-surface border border-line rounded-[12px] transition-[border-color,transform] duration-150 ease-out hover:border-accent hover:-translate-y-[2px]">
+          <div class="grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center">
+            <div>
+              <h3 class="font-heading text-2xl md:text-3xl font-semibold text-ink tracking-[-0.02em] leading-[1.07] mb-4">Fedora Hyprland Dotfiles</h3>
+              <p class="text-muted text-base mb-8">Una configurazione completa per Hyprland, un ambiente desktop a finestre affiancate che si controlla soprattutto da tastiera, adattata a Fedora Linux e a un portatile ASUS Zenbook 14 OLED. Parte dal lavoro di Riccardo Palombo per Arch e lo porta su Fedora, risolvendo i conflitti che impedivano di tenere installato anche GNOME. Uno script installa pacchetti e impostazioni in un solo passaggio.</p>
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Hyprland</span>
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Fedora</span>
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Waybar</span>
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Dotfiles</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-6">
+                <a href="https://github.com/giorossi-sudo/fedora-hyprland-dotfiles" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">Scopri il codice su GitHub &rarr;</a>
+              </div>
+              <a href="articoli/fedora-hyprland.html" class="inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent mt-4 transition-colors duration-150">Approfondisci &rarr;</a>
+            </div>
+            <img src="assets/hyprland-desktop.webp" alt="Desktop Hyprland su Fedora con barre Waybar in alto e in basso" width="1600" height="1000" class="w-full aspect-[16/10] object-cover rounded-lg border border-line">
+          </div>
+        </article>
+
+        <!-- Progetto 2: XFCE Dotfiles per PC datati -->
+        <article class="bg-surface border border-line rounded-[12px] transition-[border-color,transform] duration-150 ease-out hover:border-accent hover:-translate-y-[2px]">
+          <div class="grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center">
+            <div>
+              <h3 class="font-heading text-2xl md:text-3xl font-semibold text-ink tracking-[-0.02em] leading-[1.07] mb-4">XFCE Dotfiles per PC datati</h3>
+              <p class="text-muted text-base mb-8">Una configurazione del desktop XFCE4 su Arch Linux pensata per computer datati e poco potenti, nata per un HP compact con monitor collegato in VGA. Corregge i difetti tipici dello schermo analogico, come i pulsanti delle finestre tagliati sul bordo, e alleggerisce il carico sul processore per mantenere il sistema fluido. Parte dal tema del team di EndeavourOS e uno script la installa in un solo passaggio.</p>
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">XFCE4</span>
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Arch Linux</span>
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Low-spec</span>
+                <span class="font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1">Dotfiles</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-6">
+                <a href="https://github.com/giorossi-sudo/xfce-dotfiles" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">Scopri il codice su GitHub &rarr;</a>
+              </div>
+              <a href="articoli/xfce-dotfiles.html" class="inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent mt-4 transition-colors duration-150">Approfondisci &rarr;</a>
+            </div>
+            <img src="assets/xfce-desktop.webp" alt="Desktop XFCE4 su Arch Linux con pannello e icone Papirus scure" width="1600" height="1000" loading="lazy" class="w-full aspect-[16/10] object-cover rounded-lg border border-line md:order-first">
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 
@@ -64,182 +112,5 @@
     &copy; 2026 giorossi-sudo.tech &bull; Hosted with GitHub Pages
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const container = document.getElementById('projects-list');
-      if (!container) return;
-
-      function createImagePlaceholder() {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'bg-placeholderBg rounded-[8px] p-8 border border-dashed border-placeholderBorder flex flex-col items-center justify-center text-center min-h-[240px]';
-
-        const svgNS = 'http://www.w3.org/2000/svg';
-        const svg = document.createElementNS(svgNS, 'svg');
-        svg.setAttribute('class', 'w-10 h-10 text-muted mb-3');
-        svg.setAttribute('fill', 'none');
-        svg.setAttribute('stroke', 'currentColor');
-        svg.setAttribute('viewBox', '0 0 24 24');
-
-        const path = document.createElementNS(svgNS, 'path');
-        path.setAttribute('stroke-linecap', 'round');
-        path.setAttribute('stroke-linejoin', 'round');
-        path.setAttribute('stroke-width', '1.5');
-        path.setAttribute('d', 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z');
-        svg.appendChild(path);
-
-        const title = document.createElement('p');
-        title.className = 'font-mono uppercase tracking-[0.05em] text-xs text-ink';
-        title.textContent = 'Anteprima non disponibile';
-
-        const subtitle = document.createElement('p');
-        subtitle.className = 'text-xs text-muted mt-1.5';
-        subtitle.textContent = 'Screenshot in arrivo';
-
-        wrapper.append(svg, title, subtitle);
-        return wrapper;
-      }
-
-      function createDefaultPlaceholderCard() {
-        const article = document.createElement('article');
-        article.className = 'bg-surface border border-line rounded-[12px] transition-[border-color,transform] duration-150 ease-out hover:border-accent hover:-translate-y-[2px]';
-
-        const grid = document.createElement('div');
-        grid.className = 'grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center';
-
-        const contentCol = document.createElement('div');
-
-        const badge = document.createElement('span');
-        badge.className = 'font-mono uppercase tracking-[0.05em] text-xs text-accent block mb-3';
-        badge.textContent = 'Demo / Showcase';
-
-        const h3 = document.createElement('h3');
-        h3.className = 'font-heading text-2xl md:text-3xl font-semibold text-ink tracking-[-0.02em] leading-[1.07] mb-4';
-        h3.textContent = 'Benvenuto nel mio spazio progetti';
-
-        const desc = document.createElement('p');
-        desc.className = 'text-muted text-base mb-8';
-        desc.appendChild(document.createTextNode('Questo sito è collegato al dominio '));
-        const code = document.createElement('code');
-        code.className = 'font-mono tracking-[0.05em] text-xs text-ink border border-line px-1.5 py-0.5';
-        code.textContent = 'giorossi-sudo.tech';
-        desc.appendChild(code);
-        desc.appendChild(document.createTextNode(' e ospitato direttamente su GitHub Pages. Aggiungeremo qui schermate, anteprime e descrizioni non tecniche delle tue repository!'));
-
-        const tagsWrapper = document.createElement('div');
-        tagsWrapper.className = 'flex flex-wrap gap-2 mb-8';
-        ['GitHub Pages', 'TailwindCSS', 'Showcase'].forEach((tag) => {
-          const span = document.createElement('span');
-          span.className = 'font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1';
-          span.textContent = tag;
-          tagsWrapper.appendChild(span);
-        });
-
-        const link = document.createElement('a');
-        link.href = 'https://github.com/giorossi-sudo';
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        link.className = 'inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150';
-        link.textContent = 'Scopri il codice su GitHub \u2192';
-
-        contentCol.append(badge, h3, desc, tagsWrapper, link);
-        grid.append(contentCol, createImagePlaceholder());
-        article.appendChild(grid);
-        return article;
-      }
-
-      function createProjectCard(project) {
-        const article = document.createElement('article');
-        article.className = 'bg-surface border border-line rounded-[12px] transition-[border-color,transform] duration-150 ease-out hover:border-accent hover:-translate-y-[2px]';
-
-        const grid = document.createElement('div');
-        grid.className = 'grid md:grid-cols-2 gap-10 p-8 md:p-12 items-center';
-
-        const contentCol = document.createElement('div');
-
-        const h3 = document.createElement('h3');
-        h3.className = 'font-heading text-2xl md:text-3xl font-semibold text-ink tracking-[-0.02em] leading-[1.07] mb-4';
-        h3.textContent = project.title || '';
-        contentCol.appendChild(h3);
-
-        const desc = document.createElement('p');
-        desc.className = 'text-muted text-base mb-8';
-        desc.textContent = project.description || '';
-        contentCol.appendChild(desc);
-
-        if (Array.isArray(project.tags) && project.tags.length > 0) {
-          const tagsWrapper = document.createElement('div');
-          tagsWrapper.className = 'flex flex-wrap gap-2 mb-8';
-          project.tags.forEach((tag) => {
-            const span = document.createElement('span');
-            span.className = 'font-mono uppercase tracking-[0.05em] text-xs text-muted border border-line px-3 py-1';
-            span.textContent = tag;
-            tagsWrapper.appendChild(span);
-          });
-          contentCol.appendChild(tagsWrapper);
-        }
-
-        const linksWrapper = document.createElement('div');
-        linksWrapper.className = 'flex flex-wrap items-center gap-6';
-
-        if (project.repoUrl) {
-          const repoLink = document.createElement('a');
-          repoLink.href = project.repoUrl;
-          repoLink.target = '_blank';
-          repoLink.rel = 'noopener noreferrer';
-          repoLink.className = 'inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150';
-          repoLink.textContent = 'Scopri il codice su GitHub \u2192';
-          linksWrapper.appendChild(repoLink);
-        }
-
-        if (project.demoUrl) {
-          const demoLink = document.createElement('a');
-          demoLink.href = project.demoUrl;
-          demoLink.target = '_blank';
-          demoLink.rel = 'noopener noreferrer';
-          demoLink.className = 'inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150';
-          demoLink.textContent = 'Apri la demo \u2192';
-          linksWrapper.appendChild(demoLink);
-        }
-
-        contentCol.appendChild(linksWrapper);
-
-        if (project.articleUrl) {
-          const articleLink = document.createElement('a');
-          articleLink.href = project.articleUrl;
-          articleLink.className = 'inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent mt-4 transition-colors duration-150';
-          articleLink.textContent = 'Approfondisci \u2192';
-          contentCol.appendChild(articleLink);
-        }
-
-        grid.appendChild(contentCol);
-
-        if (project.image) {
-          const img = document.createElement('img');
-          img.src = project.image;
-          img.alt = project.imageAlt || project.title || '';
-          img.loading = 'lazy';
-          img.className = 'w-full aspect-[16/10] object-cover rounded-lg border border-line';
-          img.onerror = () => {
-            img.replaceWith(createImagePlaceholder());
-          };
-          grid.appendChild(img);
-        } else {
-          grid.appendChild(createImagePlaceholder());
-        }
-
-        article.appendChild(grid);
-        return article;
-      }
-
-      if (typeof PROJECTS === 'undefined' || !Array.isArray(PROJECTS) || PROJECTS.length === 0) {
-        container.appendChild(createDefaultPlaceholderCard());
-        return;
-      }
-
-      PROJECTS.forEach((project) => {
-        container.appendChild(createProjectCard(project));
-      });
-    });
-  </script>
 </body>
 </html>

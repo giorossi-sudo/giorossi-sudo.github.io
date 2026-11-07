@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://giorossi-sudo.tech/sitemap.xml
