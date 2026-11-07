@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fedora Hyprland Dotfiles | giorossi-sudo.tech</title>
+  <meta name="description" content="Configurazione di Hyprland per Fedora Linux: convivenza con GNOME, calibrazione per display OLED ASUS Zenbook 14 e guida all'installazione rapida.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../theme.js"></script>
+</head>
+<body class="bg-bg text-ink font-body leading-[1.6] min-h-screen antialiased selection:bg-accent selection:text-surface">
+
+  <!-- Header -->
+  <header class="border-b border-line bg-bg">
+    <div class="max-w-container mx-auto px-6 py-6 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="inline-block w-2.5 h-2.5 bg-accent"></span>
+        <a href="../index.html" class="font-heading font-bold text-lg text-ink tracking-[-0.02em] leading-[1.07] hover:text-accent transition-colors duration-150">giorossi-sudo.tech</a>
+      </div>
+      <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" 
+         class="inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub Profile
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenuto Articolo -->
+  <main class="max-w-2xl mx-auto px-6 py-12 md:py-16">
+    <div class="mb-8">
+      <a href="../index.html#progetti" class="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-accent transition-colors duration-150">
+        &larr; Torna ai progetti
+      </a>
+    </div>
+
+    <article>
+      <div class="font-mono uppercase tracking-[0.05em] text-xs text-muted mb-3">
+        Guida e approfondimento
+      </div>
+      <h1 class="font-heading font-bold text-3xl md:text-4xl text-ink tracking-[-0.02em] leading-[1.15] mb-6">
+        Fedora Hyprland Dotfiles
+      </h1>
+      <p class="text-base text-muted mb-8 leading-[1.7]">
+        Un ambiente a finestre affiancate per Fedora Linux, progettato per convivere stabilmente con GNOME e calibrato per schermi moderni ad alta definizione.
+      </p>
+
+      <img src="../assets/hyprland-desktop.webp" 
+           alt="Desktop Hyprland su Fedora con barre Waybar in alto e in basso" 
+           class="w-full aspect-[16/10] object-cover rounded-lg border border-line mb-10" 
+           loading="lazy">
+
+      <!-- Sezione 1 -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
+        Cos'è e perché esiste
+      </h2>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Hyprland &egrave; un gestore di finestre per Linux che organizza le applicazioni a griglia, affiancandole automaticamente sullo schermo senza sovrapporle. Si controlla prevalentemente con scorciatoie da tastiera, offrendo un flusso di lavoro rapido e privo di distrazioni visive.
+      </p>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Questo progetto nasce come adattamento per <strong class="text-ink font-medium">Fedora Linux</strong> (versioni 40, 41, 42 e 44) della configurazione di Riccardo Palombo, ideata in origine per Arch Linux su computer ThinkPad.
+      </p>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Questo adattamento permette di provare Hyprland senza rinunciare a GNOME: le due sessioni coesistono e si sceglie quale avviare dalla schermata di login.
+      </p>
+
+      <!-- Sezione 2 -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
+        Cosa cambia rispetto alla configurazione originale
+      </h2>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Il passaggio dall'ambiente di origine a Fedora ha richiesto modifiche precise per evitare conflitti e adattarsi al nuovo hardware:
+      </p>
+
+      <div class="space-y-6 mb-6">
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-ink mb-1">Convivenza pacifica con GNOME</h3>
+          <p class="text-base text-muted leading-[1.7]">
+            Su Arch Linux alcune variabili globali venivano scritte in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">/etc/environment</code>, ma su Fedora questo corrompe l'avvio della sessione GNOME tramite GDM. In questo progetto il file <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">/etc/environment</code> non viene toccato: le variabili necessarie vengono caricate unicamente nella sessione Hyprland con <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">hl.env</code>, lasciando GNOME del tutto inalterato.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-ink mb-1">Adattamento all'ecosistema Fedora</h3>
+          <p class="text-base text-muted leading-[1.7]">
+            Tutti i pacchetti di Arch e AUR sono stati convertiti per gli strumenti di Fedora. L'installazione sfrutta <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">dnf</code> e attiva un repository COPR per il menu delle applicazioni <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">tofi</code>. I binari Polkit in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">/usr/libexec/</code> gestiscono l'autenticazione con un fallback compatibile con GNOME, MATE e KDE. Nella shell viene inoltre impiegato lo strumento moderno <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">eza</code> al posto del deprecato <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">exa</code>.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-ink mb-1">Ottimizzazione per ASUS Zenbook 14 OLED</h3>
+          <p class="text-base text-muted leading-[1.7]">
+            La grafica &egrave; calibrata per lo schermo OLED 2.8K (<strong class="text-ink font-medium">2880&times;1800 a 90Hz</strong>) con scala 1.6, garantendo elementi definiti e testi nitidi. Sul touchpad sono attivati scorrimento naturale, tocco per il clic e gesture a tre dita per cambiare workspace, eliminando le direttive specifiche del TrackPoint ThinkPad.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-heading text-lg font-semibold text-ink mb-1">Hyprland 0.57+ (Lua) e barre Waybar stabili</h3>
+          <p class="text-base text-muted leading-[1.7]">
+            Con Hyprland 0.57 il compositor adotta il parser nativo in Lua: la configurazione risiede in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">hyprland.lua</code>, mantenendo il file <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">hyprland.conf</code> come riferimento compatibile. Le due barre Waybar sono gestite con <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">systemd-run --user</code>, garantendo persistenza ed evitando barre duplicate ai reload.
+          </p>
+        </div>
+      </div>
+
+      <!-- Sezione 3 -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
+        Come si usa
+      </h2>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Mettere in funzione la configurazione &egrave; semplice, sia nell'installazione iniziale sia nell'utilizzo quotidiano.
+      </p>
+
+      <h3 class="font-heading text-lg font-semibold text-ink mb-2">Installazione rapida</h3>
+      <p class="text-base text-muted leading-[1.7] mb-3">
+        Non servono configurazioni manuali complesse. Basta clonare il repository sul proprio computer ed eseguire lo script di installazione:
+      </p>
+      <div class="bg-surface border border-line rounded-lg p-4 font-mono text-xs text-ink overflow-x-auto mb-6">
+        <code>git clone https://github.com/giorossi-sudo/fedora-hyprland-dotfiles.git<br>
+cd fedora-hyprland-dotfiles<br>
+chmod +x install.sh<br>
+./install.sh</code>
+      </div>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Lo script gestisce tutto in automatico: installa i pacchetti necessari con <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">dnf</code>, abilita COPR per <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">tofi</code>, installa i font JetBrains Mono e FontAwesome, posiziona le configurazioni in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/</code>, copia lo sfondo in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/Pictures/</code> e aggiunge alias comodi nella shell.
+      </p>
+
+      <h3 class="font-heading text-lg font-semibold text-ink mb-2">Cambio di sessione dal login</h3>
+      <p class="text-base text-muted leading-[1.7] mb-3">
+        Dopo l'installazione &egrave; possibile passare liberamente da GNOME a Hyprland:
+      </p>
+      <ol class="list-decimal list-inside space-y-2 text-base text-muted leading-[1.7] mb-6">
+        <li>Effettua il <strong class="text-ink font-medium">Logout</strong> dalla sessione attiva.</li>
+        <li>Nella schermata di login GDM, seleziona il tuo utente.</li>
+        <li>Clicca sull'icona a ingranaggio <strong class="text-ink font-medium">&#9881;</strong> in basso a destra.</li>
+        <li>Scegli <strong class="text-ink font-medium">Hyprland</strong> oppure <strong class="text-ink font-medium">GNOME</strong>.</li>
+        <li>Inserisci la password e accedi.</li>
+      </ol>
+
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Per chi collega un monitor esterno tradizionale a 1080p, basta impostare scala 1.0 e risoluzione preferred nel file <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/hypr/hyprland.lua</code>.
+      </p>
+
+      <!-- Riquadro Il Codice -->
+      <div class="mt-14 p-6 md:p-8 bg-surface border border-line rounded-xl space-y-4">
+        <h3 class="font-heading text-lg font-bold text-ink tracking-[-0.01em]">Il codice</h3>
+        <p class="text-sm text-muted leading-[1.7]">
+          Tutti i file di configurazione, lo script di installazione automatizzato e i dettagli completi sono pubblicati e liberamente consultabili su GitHub.
+        </p>
+        <div>
+          <a href="https://github.com/giorossi-sudo/fedora-hyprland-dotfiles" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">
+            Apri il repository fedora-hyprland-dotfiles su GitHub &rarr;
+          </a>
+        </div>
+        <p class="text-xs text-muted border-t border-line pt-4 leading-[1.6]">
+          Configurazione originale e crediti a <a href="https://github.com/RiccardoPP/dotfiles" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Riccardo Palombo (RiccardoPP/dotfiles)</a>.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer identico alla home -->
+  <footer class="border-t border-line mt-12 py-10 text-center font-mono tracking-[0.05em] text-xs text-muted">
+    &copy; 2026 giorossi-sudo.tech &bull; Hosted with GitHub Pages
+  </footer>
+
+</body>
+</html>
