@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XFCE Dotfiles per PC datati | giorossi-sudo.tech</title>
+  <meta name="description" content="Configurazione XFCE4 su Arch Linux per un vecchio computer desktop: fix per monitor VGA, icone Papirus e ottimizzazioni per hardware a basso consumo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../theme.js"></script>
+</head>
+<body class="bg-bg text-ink font-body leading-[1.6] min-h-screen antialiased selection:bg-accent selection:text-surface">
+
+  <!-- Header -->
+  <header class="border-b border-line bg-bg">
+    <div class="max-w-container mx-auto px-6 py-6 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="inline-block w-2.5 h-2.5 bg-accent"></span>
+        <a href="../index.html" class="font-heading font-bold text-lg text-ink tracking-[-0.02em] leading-[1.07] hover:text-accent transition-colors duration-150">giorossi-sudo.tech</a>
+      </div>
+      <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" 
+         class="inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub Profile
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenuto Articolo -->
+  <main class="max-w-2xl mx-auto px-6 py-12 md:py-16">
+    <div class="mb-8">
+      <a href="../index.html#progetti" class="inline-flex items-center gap-1.5 text-sm font-medium text-muted hover:text-accent transition-colors duration-150">
+        &larr; Torna ai progetti
+      </a>
+    </div>
+
+    <article>
+      <div class="font-mono uppercase tracking-[0.05em] text-xs text-muted mb-3">
+        Guida e approfondimento
+      </div>
+      <h1 class="font-heading font-bold text-3xl md:text-4xl text-ink tracking-[-0.02em] leading-[1.15] mb-6">
+        XFCE Dotfiles per PC datati
+      </h1>
+
+      <img src="../assets/xfce-desktop.webp" 
+           alt="Desktop XFCE4 su Arch Linux con pannello e icone Papirus scure" 
+           class="w-full aspect-[16/10] object-cover rounded-lg border border-line mb-10" 
+           loading="lazy">
+
+      <!-- Cos'è e perché esiste -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
+        Cos'è e perché esiste
+      </h2>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        L'idea nasce dal voler recuperare un vecchio computer desktop che era praticamente inutilizzabile. Per pochi euro ho comprato un banco di RAM DDR3 da 8 GB, perché la macchina ne aveva solo 4 GB. Poi ho recuperato un SSD, ci ho installato Arch Linux e ho cercato una configurazione adatta da ottimizzare per questo computer.
+      </p>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        XFCE4 è un ambiente desktop leggero per Linux. Questa configurazione è pensata per hardware a basso consumo e per monitor analogici collegati in VGA, ed è basata sul progetto originale del team di EndeavourOS.
+      </p>
+
+      <!-- La macchina di riferimento -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
+        La macchina di riferimento
+      </h2>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        La configurazione è studiata per garantire fluidità e reattività su processori low-power e configurazioni datate. Il computer su cui è stata provata ha queste caratteristiche:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-base text-muted leading-[1.7] mb-6">
+        <li><strong class="text-ink font-medium">Processore:</strong> AMD E1-2500 APU (2 core, 2 thread a 1,4 GHz, architettura Jaguar)</li>
+        <li><strong class="text-ink font-medium">Memoria:</strong> 8 GB DDR3 più 3,6 GB di ZRAM compressa (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness = 100</code>)</li>
+        <li><strong class="text-ink font-medium">Scheda video:</strong> AMD Radeon HD 8240 (Kabini, GCN 1.1, driver amdgpu con supporto Mesa / RADV)</li>
+        <li><strong class="text-ink font-medium">Archiviazione:</strong> SSD SATA da 240 GB, con TRIM periodico abilitato</li>
+        <li><strong class="text-ink font-medium">Monitor:</strong> risoluzione nativa 1680x1050 (16:10), collegato alla porta analogica VGA</li>
+      </ul>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        La ZRAM è una parte della memoria RAM usata come spazio di swap compresso.
+      </p>
+
+      <!-- Cosa cambia -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
+        Cosa cambia
+      </h2>
+      <h3 class="font-heading text-lg font-semibold text-ink mb-2">
+        Correzioni per lo schermo VGA
+      </h3>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Sui monitor LCD collegati in analogico (VGA) un disallineamento del segnale può far slittare l'immagine verso destra e tagliare il pulsante di chiusura delle finestre massimizzate. Per questo le finestre hanno un margine destro di 26 px, così restano sempre visibili e cliccabili. Il pulsante di spegnimento del pannello è inoltre rientrato di 33 px dal bordo destro, per evitare il ritaglio.
+      </p>
+      <h3 class="font-heading text-lg font-semibold text-ink mb-2">
+        Icone Papirus-Dark
+      </h3>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Le vecchie icone raster sono sostituite da Papirus-Dark, un tema vettoriale in SVG. L'icona di disconnessione è sostituita dal pulsante di spegnimento. Alcune regole CSS in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/gtk-3.0/gtk.css</code> allineano con precisione orologio, volume, batteria e notifiche.
+      </p>
+      <h3 class="font-heading text-lg font-semibold text-ink mb-2">
+        Suite ufficio sul pannello
+      </h3>
+      <p class="text-base text-muted leading-[1.7] mb-6">
+        Sul pannello principale, accanto a Firefox, ci sono i lanciatori di LibreOffice Writer e LibreOffice Calc.
+      </p>
+      <h3 class="font-heading text-lg font-semibold text-ink mb-2">
+        Meno carico sul processore
+      </h3>
+      <ul class="list-disc list-inside space-y-2 text-base text-muted leading-[1.7] mb-6">
+        <li><strong class="text-ink font-medium">Sfondo:</strong> un PNG nativo 1680x1050 sostituisce un file SVG pesante da 3840x2400, che veniva disegnato in tempo reale.</li>
+        <li><strong class="text-ink font-medium">Screensaver:</strong> il programma <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce4-screensaver</code> è rimosso, in favore del risparmio energetico DPMS gestito dal monitor.</li>
+        <li><strong class="text-ink font-medium">Miniature in Thunar:</strong> la creazione delle anteprime è limitata ai soli file locali sotto i 10 MB, per evitare che cartelle pesanti saturino il processore.</li>
+        <li><strong class="text-ink font-medium">Accelerazione video:</strong> in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.profile</code> sono impostate le variabili per il driver radeonsi (VA-API) e per WebRender, così il processore lavora meno quando si guardano video in Firefox.</li>
+        <li><strong class="text-ink font-medium">Memoria:</strong> <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness = 100</code> sfrutta la compressione ZRAM prima di scrivere sull'SSD.</li>
+      </ul>
+
+      <!-- Come si usa -->
+      <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
+        Come si usa
+      </h2>
+      <p class="text-base text-muted leading-[1.7] mb-3">
+        Per installarla si clona il repository e si esegue lo script di installazione:
+      </p>
+      <div class="bg-surface border border-line rounded-lg p-4 font-mono text-xs text-ink overflow-x-auto mb-6">
+        <code>git clone https://github.com/giorossi-sudo/xfce-dotfiles.git<br>
+cd xfce-dotfiles<br>
+./install.sh</code>
+      </div>
+      <p class="text-base text-muted leading-[1.7] mb-3">
+        Pacchetti aggiuntivi consigliati per questa configurazione:
+      </p>
+      <div class="bg-surface border border-line rounded-lg p-4 font-mono text-xs text-ink overflow-x-auto mb-6">
+        <code>sudo pacman -S --needed papirus-icon-theme libreoffice-still libreoffice-still-it ttf-liberation hunspell-it</code>
+      </div>
+
+      <!-- Riquadro Il Codice -->
+      <div class="mt-14 p-6 md:p-8 bg-surface border border-line rounded-xl space-y-4">
+        <h3 class="font-heading text-lg font-bold text-ink tracking-[-0.01em]">Il codice</h3>
+        <p class="text-sm text-muted leading-[1.7]">
+          Tutti i file di configurazione e lo script di installazione sono pubblicati su GitHub.
+        </p>
+        <div>
+          <a href="https://github.com/giorossi-sudo/xfce-dotfiles" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">
+            Apri il repository xfce-dotfiles su GitHub &rarr;
+          </a>
+        </div>
+        <p class="text-xs text-muted border-t border-line pt-4 leading-[1.6] break-words">
+          Licenza GPLv3. Creatore originale del tema: EndeavourOS Team (<a href="https://github.com/endeavouros-team/endeavouros-xfce4-theming" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">https://github.com/endeavouros-team/endeavouros-xfce4-theming</a>) e kerness (<a href="https://github.com/kerness" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">https://github.com/kerness</a>). Modifiche, fix VGA e ottimizzazioni per hardware low-power: giorossi-sudo (<a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">https://github.com/giorossi-sudo</a>).
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer identico alla home -->
+  <footer class="border-t border-line mt-12 py-10 text-center font-mono tracking-[0.05em] text-xs text-muted">
+    &copy; 2026 giorossi-sudo.tech &bull; Hosted with GitHub Pages
+  </footer>
+
+</body>
+</html>
