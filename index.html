@@ -21,22 +21,53 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://giorossi-sudo.tech/#website",
+        "name": "giorossi-sudo | Project Showcase",
+        "url": "https://giorossi-sudo.tech/",
+        "description": "Studente di Informatica e appassionato di Linux: anteprime e approfondimenti dei miei progetti, tra dotfiles, desktop leggeri e configurazioni.",
+        "inLanguage": "it-IT",
+        "author": {
+          "@id": "https://giorossi-sudo.tech/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://giorossi-sudo.tech/#person",
+        "name": "giorossi-sudo",
+        "url": "https://giorossi-sudo.tech/",
+        "sameAs": [
+          "https://github.com/giorossi-sudo"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-bg text-ink font-body leading-[1.6] min-h-screen antialiased selection:bg-accent selection:text-surface">
 
   <!-- Header / Hero -->
   <header class="border-b border-line bg-bg">
-    <div class="max-w-container mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="max-w-container mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-4">
       <div class="flex items-center space-x-3">
         <span class="inline-block w-2.5 h-2.5 bg-accent"></span>
-        <span class="font-heading font-bold text-lg text-ink tracking-[-0.02em] leading-[1.07]">giorossi-sudo.tech</span>
+        <a href="/" class="font-heading font-bold text-lg text-ink tracking-[-0.02em] leading-[1.07] hover:text-accent transition-colors duration-150">giorossi-sudo.tech</a>
       </div>
-      <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" 
-         class="inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub Profile
-      </a>
+      <nav aria-label="Navigazione principale" class="flex items-center gap-6">
+        <a href="/articoli/" class="text-sm font-medium text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Articoli</a>
+        <a href="/chi-sono.html" class="text-sm font-medium text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Chi sono</a>
+        <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Profile
+        </a>
+      </nav>
     </div>
   </header>
 
@@ -44,21 +75,32 @@
     <!-- Intro -->
     <section class="max-w-4xl py-24 md:py-32">
       <div class="font-mono uppercase tracking-[0.05em] text-xs text-muted mb-6">
-        Studente di Informatica · Linux
+        Studente di Informatica &middot; Linux
       </div>
       <h1 class="font-heading font-bold text-ink h1-clamp tracking-[-0.02em] leading-[1.1] text-balance mb-8">
         Dietro le quinte dei miei progetti.
       </h1>
-      <p class="text-lg md:text-xl text-muted font-normal max-w-2xl text-pretty">
+      <p class="text-lg md:text-xl text-muted font-normal max-w-2xl text-pretty mb-8">
         Su GitHub trovi il codice sorgente, qui trovi <strong class="font-medium text-ink">la visione</strong>: cosa risolvono, 
         come funzionano visivamente e le anteprime pratiche di quello che ho sviluppato.
       </p>
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="/articoli/" class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">
+          Esplora tutti gli articoli &rarr;
+        </a>
+        <a href="/chi-sono.html" class="inline-flex items-center gap-2 text-sm font-medium text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">
+          Chi sono &rarr;
+        </a>
+      </div>
     </section>
 
     <!-- Grid Progetti -->
     <section id="progetti" class="py-24 border-t border-line space-y-12">
-      <div class="border-b border-line pb-5">
+      <div class="border-b border-line pb-5 flex flex-wrap items-baseline justify-between gap-4">
         <h2 class="font-heading text-2xl md:text-3xl font-bold text-ink tracking-[-0.02em] leading-[1.07]">Progetti in evidenza</h2>
+        <a href="/articoli/" class="text-sm font-medium text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">
+          Tutti gli articoli e le guide &rarr;
+        </a>
       </div>
 
       <!-- Lista Progetti -->
@@ -78,9 +120,9 @@
               <div class="flex flex-wrap items-center gap-6">
                 <a href="https://github.com/giorossi-sudo/fedora-hyprland-dotfiles" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">Scopri il codice su GitHub &rarr;</a>
               </div>
-              <a href="articoli/fedora-hyprland.html" class="inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent mt-4 transition-colors duration-150">Approfondisci &rarr;</a>
+              <a href="/articoli/fedora-hyprland.html" class="inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent mt-4 transition-colors duration-150">Approfondisci &rarr;</a>
             </div>
-            <img src="assets/hyprland-desktop.webp" alt="Desktop Hyprland su Fedora con barre Waybar in alto e in basso" width="1600" height="1000" class="w-full aspect-[16/10] object-cover rounded-lg border border-line">
+            <img src="/assets/hyprland-desktop.webp" alt="Desktop Hyprland su Fedora con barre Waybar in alto e in basso" width="1600" height="1000" class="w-full aspect-[16/10] object-cover rounded-lg border border-line">
           </div>
         </article>
 
@@ -99,17 +141,35 @@
               <div class="flex flex-wrap items-center gap-6">
                 <a href="https://github.com/giorossi-sudo/xfce-dotfiles" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-medium text-accent underline decoration-accent/40 underline-offset-4 hover:decoration-accent transition-colors duration-150">Scopri il codice su GitHub &rarr;</a>
               </div>
-              <a href="articoli/xfce-dotfiles.html" class="inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent mt-4 transition-colors duration-150">Approfondisci &rarr;</a>
+              <div class="flex flex-wrap items-center gap-6 mt-4">
+                <a href="/articoli/xfce-dotfiles.html" class="inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Approfondisci il progetto &rarr;</a>
+                <a href="/articoli/ottimizzare-xfce-poca-ram.html" class="inline-block text-sm text-muted underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Guida: ottimizzare XFCE con poca RAM &rarr;</a>
+              </div>
             </div>
-            <img src="assets/xfce-desktop.webp" alt="Desktop XFCE4 su Arch Linux con pannello e icone Papirus scure" width="1600" height="1000" loading="lazy" class="w-full aspect-[16/10] object-cover rounded-lg border border-line md:order-first">
+            <img src="/assets/xfce-desktop.webp" alt="Desktop XFCE4 su Arch Linux con pannello e icone Papirus scure" width="1600" height="1000" loading="lazy" class="w-full aspect-[16/10] object-cover rounded-lg border border-line md:order-first">
           </div>
         </article>
+      </div>
+
+      <div class="pt-4">
+        <a href="/articoli/" class="inline-flex items-center gap-2 text-sm font-medium text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">
+          Vai all'indice completo degli articoli (/articoli/) &rarr;
+        </a>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-line mt-12 py-10 text-center font-mono tracking-[0.05em] text-xs text-muted">
-    &copy; 2026 giorossi-sudo.tech &bull; Hosted with GitHub Pages
+  <footer class="border-t border-line mt-12 py-10 text-center font-mono tracking-[0.05em] text-xs text-muted space-y-3">
+    <div>
+      <a href="/" class="underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Home</a>
+      &bull;
+      <a href="/articoli/" class="underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Articoli</a>
+      &bull;
+      <a href="/chi-sono.html" class="underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Chi sono</a>
+      &bull;
+      <a href="https://github.com/giorossi-sudo" target="_blank" rel="noopener noreferrer" class="underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">GitHub</a>
+    </div>
+    <div>&copy; 2026 giorossi-sudo.tech &bull; Hosted with GitHub Pages</div>
   </footer>
 
 </body>

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./404.html", "./articoli/*.html"],
+  content: ["./index.html", "./404.html", "./chi-sono.html", "./articoli/*.html"],
   theme: {
     fontFamily: {
       heading: ['"Bricolage Grotesque"', 'sans-serif'],
