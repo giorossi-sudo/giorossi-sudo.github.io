@@ -31,7 +31,7 @@
         "headline": "XFCE Dotfiles per PC datati",
         "description": "Configurazione XFCE4 su Arch Linux per un vecchio computer desktop: fix per monitor VGA, icone Papirus e ottimizzazioni per hardware a basso consumo.",
         "datePublished": "2026-11-07",
-        "dateModified": "2026-11-10",
+        "dateModified": "2026-11-13",
         "author": {
           "@type": "Person",
           "name": "giorossi-sudo",
@@ -111,14 +111,14 @@
         Guida e approfondimento
       </div>
       <p class="text-xs text-muted mb-4">
-        Pubblicato il <time datetime="2026-11-07">7 novembre 2026</time> &middot; Aggiornato a novembre 2026
+        Pubblicato il <time datetime="2026-11-07">7 novembre 2026</time> &middot; Aggiornato il <time datetime="2026-11-13">13 novembre 2026</time>
       </p>
       <h1 class="font-heading font-bold text-3xl md:text-4xl text-ink tracking-[-0.02em] leading-[1.15] mb-6">
         XFCE Dotfiles per PC datati
       </h1>
 
       <img src="/assets/xfce-desktop.webp" 
-           alt="Desktop XFCE4 su Arch Linux con pannello e icone Papirus scure" 
+           alt="Desktop XFCE4 su Arch Linux con pannello, icone Papirus scure, Firefox e Terminale" 
            width="1600" 
            height="1000" 
            class="w-full aspect-[16/10] object-cover rounded-lg border border-line mb-10">
@@ -143,7 +143,7 @@
       </p>
       <ul class="list-disc list-inside space-y-2 text-base text-muted leading-[1.7] mb-6">
         <li><strong class="text-ink font-medium">Processore:</strong> AMD E1-2500 APU (2 core, 2 thread a 1,4 GHz, architettura Jaguar)</li>
-        <li><strong class="text-ink font-medium">Memoria:</strong> 8 GB DDR3 più 3,6 GB di ZRAM compressa (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness = 100</code>)</li>
+        <li><strong class="text-ink font-medium">Memoria:</strong> 8 GB DDR3 più 3,6 GB di ZRAM compressa (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness = 180</code>, <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.page-cluster = 0</code>)</li>
         <li><strong class="text-ink font-medium">Scheda video:</strong> AMD Radeon HD 8240 (Kabini, GCN 1.1, driver amdgpu con supporto Mesa / RADV)</li>
         <li><strong class="text-ink font-medium">Archiviazione:</strong> SSD SATA da 240 GB, con TRIM periodico abilitato</li>
         <li><strong class="text-ink font-medium">Monitor:</strong> risoluzione nativa 1680x1050 (16:10), collegato alla porta analogica VGA</li>
@@ -160,13 +160,13 @@
         Correzioni per lo schermo VGA
       </h3>
       <p class="text-base text-muted leading-[1.7] mb-6">
-        Sui monitor LCD collegati in analogico (VGA) un disallineamento del segnale può far slittare l'immagine verso destra e tagliare il pulsante di chiusura delle finestre massimizzate. Per questo le finestre hanno un margine destro di 26 px, così restano sempre visibili e cliccabili. Il pulsante di spegnimento del pannello è inoltre rientrato di 33 px dal bordo destro, per evitare il ritaglio.
+        Sui monitor LCD collegati in analogico (VGA) un disallineamento del segnale può far slittare l'immagine verso destra e tagliare il pulsante di chiusura delle finestre massimizzate. Per questo in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfwm4</code> le finestre hanno un margine destro di 26 px, così restano sempre visibili e cliccabili. Inoltre uno spaziatore a fine pannello (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">#separator-15</code>) mantiene il pulsante di spegnimento rientrato dal bordo destro per evitare il ritaglio da overscan.
       </p>
       <h3 class="font-heading text-lg font-semibold text-ink mb-2">
-        Icone Papirus-Dark
+        Icone Papirus-Dark e tema solido
       </h3>
       <p class="text-base text-muted leading-[1.7] mb-6">
-        Le vecchie icone raster sono sostituite da Papirus-Dark, un tema vettoriale in SVG. L'icona di disconnessione è sostituita dal pulsante di spegnimento. Alcune regole CSS in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/gtk-3.0/gtk.css</code> allineano con precisione orologio, volume, batteria e notifiche.
+        Le vecchie icone raster sono sostituite da Papirus-Dark, un tema vettoriale in SVG, abbinato al tema <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">Arc-Darker-solid</code> senza trasparenze. L'icona di disconnessione è sostituita dal pulsante di spegnimento. Alcune regole CSS in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/gtk-3.0/gtk.css</code> disattivano il ridimensionamento delle icone (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">-gtk-icon-transform: none</code>) e allineano con precisione orologio, volume e notifiche.
       </p>
       <h3 class="font-heading text-lg font-semibold text-ink mb-2">
         Suite ufficio sul pannello
@@ -175,14 +175,15 @@
         Sul pannello principale, accanto a Firefox, ci sono i lanciatori di LibreOffice Writer e LibreOffice Calc.
       </p>
       <h3 class="font-heading text-lg font-semibold text-ink mb-2">
-        Meno carico sul processore
+        Meno carico sul processore e zero overhead
       </h3>
       <ul class="list-disc list-inside space-y-2 text-base text-muted leading-[1.7] mb-6">
-        <li><strong class="text-ink font-medium">Sfondo:</strong> un PNG nativo 1680x1050 sostituisce un file SVG pesante da 3840x2400, che veniva disegnato in tempo reale.</li>
-        <li><strong class="text-ink font-medium">Screensaver:</strong> il programma <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce4-screensaver</code> è rimosso, in favore del risparmio energetico DPMS gestito dal monitor.</li>
+        <li><strong class="text-ink font-medium">Sfondo:</strong> un PNG nativo 1680x1050 (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce-x-1680x1050.png</code>) sostituisce un file SVG pesante da 3840x2400, azzerando i picchi di rasterizzazione di Cairo/xfdesktop.</li>
+        <li><strong class="text-ink font-medium">Screensaver:</strong> il programma <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce4-screensaver</code> è disabilitato all'avvio tramite override locale (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/autostart/xfce4-screensaver.desktop</code>), lasciando la gestione al risparmio energetico DPMS del monitor.</li>
         <li><strong class="text-ink font-medium">Miniature in Thunar:</strong> la creazione delle anteprime è limitata ai soli file locali sotto i 10 MB, per evitare che cartelle pesanti saturino il processore.</li>
-        <li><strong class="text-ink font-medium">Accelerazione video:</strong> in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.profile</code> sono impostate le variabili per il driver radeonsi (VA-API) e per WebRender, così il processore lavora meno quando si guardano video in Firefox.</li>
-        <li><strong class="text-ink font-medium">Memoria:</strong> <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness = 100</code> sfrutta la compressione ZRAM prima di scrivere sull'SSD (approfondito nella guida <a href="/articoli/ottimizzare-xfce-poca-ram.html" class="text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Ottimizzare XFCE su un PC con poca RAM</a>).</li>
+        <li><strong class="text-ink font-medium">Accelerazione GPU e accessibilità:</strong> in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.xprofile</code> (caricato direttamente da LightDM) sono impostate le variabili per il driver <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">radeonsi</code> (VA-API), WebRender e <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">NO_AT_BRIDGE=1</code> per disattivare il bridge <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">at-spi</code> e risparmiare RAM e traffico D-Bus.</li>
+        <li><strong class="text-ink font-medium">Pannello, window manager e terminale snelli:</strong> rimosso <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">power-manager-plugin</code> su desktop fisso, orologio senza secondi (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">%H:%M</code>) per evitare ridisegni ogni secondo, compositing disattivato e <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">cycle_preview = false</code> in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfwm4</code>, e scrollback limitato a 10.000 righe in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce4-terminal</code>.</li>
+        <li><strong class="text-ink font-medium">Memoria ZRAM:</strong> parametri ottimizzati in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">/etc/sysctl.d/99-zram.conf</code> (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness = 180</code>, <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.page-cluster = 0</code>, <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.watermark_boost_factor = 0</code> e <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.watermark_scale_factor = 125</code>) per sfruttare al meglio la compressione in RAM (approfondito nella guida <a href="/articoli/ottimizzare-xfce-poca-ram.html" class="text-ink underline decoration-muted/50 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-150">Ottimizzare XFCE su un PC con poca RAM</a>).</li>
       </ul>
 
       <!-- Come si usa -->

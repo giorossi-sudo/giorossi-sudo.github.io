@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ottimizzare XFCE su un PC con poca RAM | giorossi-sudo.tech</title>
-  <meta name="description" content="Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 100, compositing disattivato, Thunar e accelerazione VA-API.">
+  <meta name="description" content="Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 180, compositing disattivato, Thunar e accelerazione VA-API.">
   <meta name="theme-color" content="#FAFAF7">
   <link rel="canonical" href="https://giorossi-sudo.tech/articoli/ottimizzare-xfce-poca-ram.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Ottimizzare XFCE su un PC con poca RAM | giorossi-sudo.tech">
-  <meta property="og:description" content="Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 100, compositing disattivato, Thunar e accelerazione VA-API.">
+  <meta property="og:description" content="Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 180, compositing disattivato, Thunar e accelerazione VA-API.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://giorossi-sudo.tech/articoli/ottimizzare-xfce-poca-ram.html">
   <meta property="og:image" content="https://giorossi-sudo.tech/assets/og-image.png">
   <meta property="og:locale" content="it_IT">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ottimizzare XFCE su un PC con poca RAM | giorossi-sudo.tech">
-  <meta name="twitter:description" content="Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 100, compositing disattivato, Thunar e accelerazione VA-API.">
+  <meta name="twitter:description" content="Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 180, compositing disattivato, Thunar e accelerazione VA-API.">
   <meta name="twitter:image" content="https://giorossi-sudo.tech/assets/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,9 +29,9 @@
       {
         "@type": "Article",
         "headline": "Ottimizzare XFCE su un PC con poca RAM",
-        "description": "Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 100, compositing disattivato, Thunar e accelerazione VA-API.",
+        "description": "Guida pratica per ottimizzare XFCE4 su Arch Linux su un PC datato con poca RAM: ZRAM con swappiness a 180, compositing disattivato, Thunar e accelerazione VA-API.",
         "datePublished": "2026-11-10",
-        "dateModified": "2026-11-10",
+        "dateModified": "2026-11-13",
         "author": {
           "@type": "Person",
           "name": "giorossi-sudo",
@@ -111,7 +111,7 @@
         Guida tecnica &middot; Linux &amp; Hardware Low-Spec
       </div>
       <p class="text-xs text-muted mb-4">
-        Pubblicato il <time datetime="2026-11-10">10 novembre 2026</time>
+        Pubblicato il <time datetime="2026-11-10">10 novembre 2026</time> &middot; Aggiornato il <time datetime="2026-11-13">13 novembre 2026</time>
       </p>
       <h1 class="font-heading font-bold text-3xl md:text-4xl text-ink tracking-[-0.02em] leading-[1.15] mb-6">
         Ottimizzare XFCE su un PC con poca RAM
@@ -159,20 +159,23 @@
 
       <!-- Sezione 3 -->
       <h2 class="font-heading text-xl md:text-2xl font-bold text-ink tracking-[-0.02em] mt-12 mb-4">
-        1. Gestione della memoria con ZRAM e swappiness a 100
+        1. Gestione della memoria con ZRAM e swappiness a 180
       </h2>
       <p class="text-base text-muted leading-[1.7] mb-6">
         Su macchine con 4 GB o 8 GB di RAM, l'esaurimento della memoria fisica durante la navigazione web moderna è un rischio concreto. Scrivere pagine di memoria inattive sullo swap dell'SSD SATA introduce latenze elevate e usura inutilmente le celle NAND del disco. La soluzione adottata consiste nell'affiancare alla RAM un dispositivo <strong class="text-ink font-medium">ZRAM</strong> da 3,6 GB: una porzione della RAM stessa in cui i dati vengono compressi al volo.
       </p>
       <h3 class="font-heading text-lg font-semibold text-ink mb-2">
-        Perché impostare vm.swappiness = 100
+        Perché impostare vm.swappiness = 180 e page-cluster = 0
       </h3>
       <p class="text-base text-muted leading-[1.7] mb-4">
-        Sui sistemi con swap tradizionale su disco si tende ad abbassare il parametro <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness</code> per ritardare il più possibile la scrittura su disco. Con ZRAM vale il principio opposto: comprimere e decomprimere blocchi direttamente in RAM è enormemente più rapido rispetto all'I/O su SATA. Impostando il valore a <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">100</code> nel file <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">/etc/sysctl.d/99-zram.conf</code>, il kernel Linux sposta proattivamente le pagine meno recenti nella memoria compressa, lasciando libera la RAM non compressa per la cache del file system e le applicazioni attive:
+        Sui sistemi con swap tradizionale su disco si tende ad abbassare il parametro <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness</code> per ritardare il più possibile la scrittura su disco. Con ZRAM vale il principio opposto: comprimere e decomprimere blocchi direttamente in RAM è enormemente più rapido rispetto all'I/O su SATA. Impostando <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.swappiness = 180</code> in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">/etc/sysctl.d/99-zram.conf</code> insieme a <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">vm.page-cluster = 0</code> (che disabilita il readahead superfluo sullo swap in RAM) e ai parametri di <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">watermark</code>, il kernel sposta proattivamente le pagine meno recenti nella memoria compressa lasciando libera la RAM non compressa per la cache e le app attive:
       </p>
       <div class="bg-surface border border-line rounded-lg p-4 font-mono text-xs text-ink overflow-x-auto mb-6">
         <code># /etc/sysctl.d/99-zram.conf<br>
-vm.swappiness = 100</code>
+vm.swappiness = 180<br>
+vm.watermark_boost_factor = 0<br>
+vm.watermark_scale_factor = 125<br>
+vm.page-cluster = 0</code>
       </div>
       <p class="text-base text-muted leading-[1.7] mb-6">
         Per rendere subito effettiva l'impostazione senza riavviare la macchina, lo script di installazione esegue <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">sudo sysctl -p /etc/sysctl.d/99-zram.conf</code>.
@@ -189,10 +192,11 @@ vm.swappiness = 100</code>
         Configurazione di xfwm4 senza compositing
       </h3>
       <p class="text-base text-muted leading-[1.7] mb-4">
-        Nel file <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml</code> il compositing è stato disattivato (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">use_compositing = false</code>) insieme all'attivazione di <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">unredirect_overlays = true</code> e al tema solido <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">Arc-Darker-solid</code>:
+        Nel file <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml</code> il compositing è stato disattivato (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">use_compositing = false</code>) insieme a <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">cycle_preview = false</code> (per evitare anteprime pesanti durante l'Alt+Tab), all'attivazione di <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">unredirect_overlays = true</code> e al tema solido <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">Arc-Darker-solid</code>:
       </p>
       <div class="bg-surface border border-line rounded-lg p-4 font-mono text-xs text-ink overflow-x-auto mb-6">
         <code>&lt;property name="theme" type="string" value="Arc-Darker-solid"/&gt;<br>
+&lt;property name="cycle_preview" type="bool" value="false"/&gt;<br>
 &lt;property name="unredirect_overlays" type="bool" value="true"/&gt;<br>
 &lt;property name="use_compositing" type="bool" value="false"/&gt;<br>
 &lt;property name="margin_right" type="int" value="26"/&gt;</code>
@@ -205,7 +209,7 @@ vm.swappiness = 100</code>
         Sfondo PNG pre-renderizzato al posto dell'SVG 4K
       </h3>
       <p class="text-base text-muted leading-[1.7] mb-6">
-        Un altro dettaglio spesso trascurato riguarda lo sfondo del desktop gestito da <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfdesktop</code>. Molte distribuzioni forniscono sfondi predefiniti in formato vettoriale SVG o ad altissima risoluzione (3840&times;2400). Ad ogni avvio della sessione o ridimensionamento, la libreria Cairo deve rasterizzare e scalare l'immagine in memoria. Nel repository lo sfondo SVG è stato sostituito con un file PNG statico pre-renderizzato alla risoluzione nativa esatta del pannello (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">1680x1050</code>, salvato in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.local/share/backgrounds/xfce-teal-1680x1050.png</code>), azzerando il tempo di calcolo all'avvio.
+        Un altro dettaglio spesso trascurato riguarda lo sfondo del desktop gestito da <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfdesktop</code>. Molte distribuzioni forniscono sfondi predefiniti in formato vettoriale SVG o ad altissima risoluzione (3840&times;2400). Ad ogni avvio della sessione o ridimensionamento, la libreria Cairo deve rasterizzare e scalare l'immagine in memoria. Nel repository lo sfondo SVG è stato sostituito con un file PNG statico pre-renderizzato alla risoluzione nativa esatta del pannello (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">1680x1050</code>, salvato in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.local/share/backgrounds/xfce-x-1680x1050.png</code>), azzerando il tempo di calcolo all'avvio.
       </p>
 
       <!-- Sezione 5 -->
@@ -250,13 +254,14 @@ Hidden=true</code>
         Su un processore AMD E1-2500 la decodifica software dei flussi video in Firefox porta immediatamente la CPU al massimo utilizzo, rendendo scattosa anche l'interfaccia del browser. La scheda integrata <strong class="text-ink font-medium">AMD Radeon HD 8240</strong> (architettura GCN 1.1 supportata dal driver <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">amdgpu</code>) dispone però di un blocco dedicato alla decodifica hardware accessibile tramite <strong class="text-ink font-medium">VA-API</strong> e il driver Mesa <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">radeonsi</code>.
       </p>
       <p class="text-base text-muted leading-[1.7] mb-4">
-        Inserendo le variabili d'ambiente direttamente in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.profile</code> (letto all'accesso da LightDM), il sistema istruisce sia la libreria VA-API sia Firefox ad affidare il rendering della pagina (tramite <strong class="text-ink font-medium">WebRender</strong>) e la decodifica dei flussi video alla GPU:
+        Inserendo le variabili d'ambiente direttamente in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.xprofile</code> (letto all'accesso da LightDM/X11), il sistema istruisce sia la libreria VA-API sia Firefox ad affidare il rendering della pagina (tramite <strong class="text-ink font-medium">WebRender</strong>) e la decodifica dei flussi video alla GPU, disattivando al tempo stesso il bridge di accessibilità <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">at-spi</code> (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">NO_AT_BRIDGE=1</code>) per risparmiare RAM e traffico D-Bus:
       </p>
       <div class="bg-surface border border-line rounded-lg p-4 font-mono text-xs text-ink overflow-x-auto mb-6">
-        <code># ~/.profile - Hardware acceleration environment for AMD GPU<br>
+        <code># ~/.xprofile - Hardware acceleration environment for AMD GPU<br>
 export LIBVA_DRIVER_NAME=radeonsi<br>
 export MOZ_WEBRENDER=1<br>
-export MOZ_ACCELERATED=1</code>
+export MOZ_ACCELERATED=1<br>
+export NO_AT_BRIDGE=1</code>
       </div>
 
       <!-- Sezione 8 -->
@@ -264,14 +269,14 @@ export MOZ_ACCELERATED=1</code>
         6. Cura del pannello con CSS GTK3 e installazione automatica
       </h2>
       <p class="text-base text-muted leading-[1.7] mb-6">
-        Ottimizzare un sistema per poca RAM non significa rinunciare all'ordine visivo. Al posto di temi pesanti o barre esterne aggiuntive, è stato mantenuto il pannello nativo <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce4-panel</code> abbinato al set di icone vettoriali <strong class="text-ink font-medium">Papirus-Dark</strong> e a poche righe mirate in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/gtk-3.0/gtk.css</code> che disattivano le trasformazioni superflue delle icone (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">-gtk-icon-transform: none</code>), uniformano le spaziature degli indicatori di stato e aggiungono il rientro di sicurezza per i monitor VGA.
+        Ottimizzare un sistema per poca RAM non significa rinunciare all'ordine visivo. Al posto di temi pesanti o barre esterne aggiuntive, è stato mantenuto il pannello nativo <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce4-panel</code> (senza <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">power-manager-plugin</code> su PC fisso e con orologio <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">%H:%M</code> senza secondi per evitare ridisegni continui) abbinato al set di icone vettoriali <strong class="text-ink font-medium">Papirus-Dark</strong>, allo scrollback limitato a 10.000 righe in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfce4-terminal</code> e a poche righe mirate in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/gtk-3.0/gtk.css</code> che disattivano le trasformazioni superflue delle icone (<code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">-gtk-icon-transform: none</code>), uniformano le spaziature degli indicatori di stato e aggiungono il rientro di sicurezza per i monitor VGA.
       </p>
       <p class="text-base text-muted leading-[1.7] mb-3">
         Tutte queste modifiche sono raccolte e automatizzate nello script <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">install.sh</code> del repository, che adatta automaticamente i percorsi alla cartella <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">$HOME</code> dell'utente corrente:
       </p>
       <ol class="list-decimal list-inside space-y-2 text-base text-muted leading-[1.7] mb-6">
         <li>Copia le configurazioni di XFCE4, Thunar e GTK3 in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.config/</code> e gli sfondi nativi in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.local/share/backgrounds/</code>.</li>
-        <li>Aggiunge in modo non distruttivo le variabili di accelerazione hardware in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.profile</code> se non sono già presenti.</li>
+        <li>Aggiunge in modo non distruttivo le variabili di accelerazione hardware e <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">NO_AT_BRIDGE=1</code> in <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">~/.xprofile</code> se non sono già presenti.</li>
         <li>Chiede conferma prima di applicare <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">/etc/sysctl.d/99-zram.conf</code> e ricarica all'istante il pannello e <code class="font-mono text-xs bg-placeholderBg text-ink px-1.5 py-0.5 rounded border border-line">xfwm4</code>.</li>
       </ol>
 
