@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="container page-wrap">
+  <div class="back-nav">
+    <a href="/" class="back-link">&larr; Torna alla home</a>
+  </div>
+
+  <article class="article-body">
+    {{- with .Params.eyebrow }}
+    <div class="eyebrow">{{ . }}</div>
+    {{- end }}
+    <h1 class="article-title">{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+</div>
+{{ end }}

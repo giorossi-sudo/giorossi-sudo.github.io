@@ -1,0 +1,69 @@
+name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.170.0
+      HUGO_SHA256: 0930754ec22ad2dd1a252f8c31a5e57faccc9d15f1c3d381ddafcb96eeb8aef0
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Hugo CLI (verified SHA256)
+        run: |
+          curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+          echo "${HUGO_SHA256}  hugo_${HUGO_VERSION}_linux-amd64.tar.gz" | sha256sum -c -
+          mkdir -p "${HOME}/.local/bin"
+          tar -C "${HOME}/.local/bin" -xzf "hugo_${HUGO_VERSION}_linux-amd64.tar.gz" hugo
+          echo "${HOME}/.local/bin" >> "${GITHUB_PATH}"
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          TZ: Europe/Rome
+        run: |
+          hugo --gc --minify --baseURL "https://giorossi-sudo.tech/" --printPathWarnings --panicOnWarning
+
+      - name: Verify links and SEO metadata
+        run: |
+          python3 scripts/check-links.py
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

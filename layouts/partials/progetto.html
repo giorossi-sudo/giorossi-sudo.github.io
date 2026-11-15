@@ -1,0 +1,27 @@
+{{- $p := .proj -}}
+{{- $num := .num -}}
+{{- $total := .total -}}
+<article class="project-row">
+  <div class="project-num-col" aria-hidden="true">
+    <span class="project-num-big" data-num="{{ printf "%02d" $num }}"></span>
+    <span class="project-num-total" data-total="/ {{ printf "%02d" $total }}"></span>
+  </div>
+  <div class="project-content">
+    <h3 class="project-title">{{ $p.title }}</h3>
+    <p class="project-desc">{{ $p.description }}</p>
+    <div class="tag-list">
+      {{- range $p.tags }}
+      <span class="tag-pill">{{ . }}</span>
+      {{- end }}
+    </div>
+    <div class="project-links">
+      <a href="{{ $p.repo_url }}" target="_blank" rel="noopener noreferrer" class="line-link" aria-label="{{ $p.repo_label }} ({{ $p.title }})">{{ $p.repo_label }}</a>
+      {{- range $p.links }}
+      <a href="{{ .url }}" class="line-link line-link-muted" aria-label="{{ .label }} ({{ $p.title }})">{{ .label }}</a>
+      {{- end }}
+    </div>
+  </div>
+  <figure class="project-media">
+    {{ partial "img.html" (dict "src" $p.image "alt" $p.image_alt "lazy" $p.lazy "sizes" "(min-width: 860px) 460px, 100vw") }}
+  </figure>
+</article>

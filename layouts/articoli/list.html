@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="container page-wrap">
+  <div class="back-nav">
+    <a href="/" class="back-link">&larr; Torna alla home</a>
+  </div>
+
+  <header class="archive-header">
+    <div class="eyebrow">{{ .Params.eyebrow }}</div>
+    <h1 class="archive-title">{{ .Title }}</h1>
+    <p class="archive-lead">{{ .Params.lead }}</p>
+  </header>
+
+  <div class="archive-list">
+    {{- range .Pages.ByDate.Reverse }}
+    <article class="archive-item">
+      <div class="archive-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Params.date_display }}</time>
+        <span aria-hidden="true">&bull;</span>
+        <span class="archive-cat">{{ .Params.categoria }}</span>
+      </div>
+      <h2 class="archive-item-title">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h2>
+      <p class="archive-item-desc">{{ .Params.list_summary | safeHTML }}</p>
+      <div class="archive-item-footer">
+        <div class="tag-list">
+          {{- range .Params.tags }}
+          <span class="tag-pill">{{ . }}</span>
+          {{- end }}
+        </div>
+        <a href="{{ .RelPermalink }}" class="line-link" aria-label="Leggi l'articolo: {{ .Title }}">Leggi l'articolo &rarr;</a>
+      </div>
+    </article>
+    {{- end }}
+  </div>
+</div>
+{{ end }}

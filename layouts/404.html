@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="container page-wrap">
+  <div class="article-body">
+    <div class="eyebrow">Errore 404</div>
+    <h1 class="article-title">Pagina non trovata</h1>
+    <p>La pagina che cerchi non esiste o è stata spostata. Puoi tornare alla pagina principale oppure leggere uno degli approfondimenti qui sotto.</p>
+
+    <div class="hero-actions" style="margin: 2rem 0 3rem;">
+      <a href="/" class="line-link">&larr; Torna alla home</a>
+      <a href="/articoli/" class="line-link line-link-muted">Tutti gli articoli &rarr;</a>
+      <a href="/chi-sono.html" class="line-link line-link-muted">Chi sono &rarr;</a>
+    </div>
+
+    <div class="related-section">
+      <h2 class="related-title">Articoli disponibili</h2>
+      <ul>
+        {{- range (where .Site.RegularPages "Section" "articoli").ByDate.Reverse }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }} &rarr;</a></li>
+        {{- end }}
+      </ul>
+    </div>
+  </div>
+</div>
+{{ end }}

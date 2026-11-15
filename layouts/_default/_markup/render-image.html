@@ -1,0 +1,3 @@
+{{- $alt := .PlainText -}}
+{{- $dest := .Destination -}}
+{{ partial "img.html" (dict "src" $dest "alt" $alt "lazy" true "sizes" "(min-width: 860px) 720px, 100vw") }}

@@ -1,0 +1,30 @@
+baseURL = "https://giorossi-sudo.tech/"
+locale = "it-IT"
+defaultContentLanguage = "it"
+title = "giorossi-sudo | Project Showcase"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term", "RSS"]
+disableHugoGeneratorInject = true
+
+[params]
+  description = "Studente di Informatica e appassionato di Linux: anteprime e approfondimenti dei miei progetti, tra dotfiles, desktop leggeri e configurazioni."
+  author = "giorossi-sudo"
+  github = "https://github.com/giorossi-sudo"
+  ogImage = "https://giorossi-sudo.tech/assets/og-image.png"
+  themeColor = "#FAFAF7"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.typographer]
+        disable = true
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepQuotes = true
+      keepWhitespace = true

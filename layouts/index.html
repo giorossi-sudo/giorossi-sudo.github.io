@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{- $progetti := hugo.Data.progetti -}}
+{{- $total := len $progetti -}}
+<div class="container">
+  <section class="hero-section">
+    <div class="eyebrow">{{ .Params.eyebrow }}</div>
+    <h1 class="hero-title">{{ .Params.hero_title }}</h1>
+    <p class="hero-lead">{{ .Params.hero_lead }}</p>
+    <div class="hero-actions">
+      <a href="/articoli/" class="line-link">Esplora tutti gli articoli &rarr;</a>
+      <a href="/chi-sono.html" class="line-link line-link-muted">Chi sono &rarr;</a>
+    </div>
+  </section>
+
+  <section id="progetti" class="projects-section">
+    <div class="section-header">
+      <h2 class="section-title">Progetti in evidenza</h2>
+    </div>
+    <div class="project-list">
+      {{- range $idx, $p := $progetti }}
+        {{ partial "progetto.html" (dict "proj" $p "num" (add $idx 1) "total" $total) }}
+      {{- end }}
+    </div>
+  </section>
+</div>
+{{ end }}

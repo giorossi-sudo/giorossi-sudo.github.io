@@ -1,0 +1,21 @@
+{{- $src := .src -}}
+{{- $alt := .alt -}}
+{{- $lazy := .lazy | default false -}}
+{{- $sizes := .sizes | default "(min-width: 860px) 720px, 100vw" -}}
+{{- $res := resources.Get $src -}}
+{{- if $res -}}
+  {{- $w480 := $res.Resize "480x webp q82" -}}
+  {{- $w800 := $res.Resize "800x webp q82" -}}
+  {{- $w1200 := $res.Resize "1200x webp q82" -}}
+  <img
+    src="{{ $res.RelPermalink }}"
+    srcset="{{ $w480.RelPermalink }} 480w, {{ $w800.RelPermalink }} 800w, {{ $w1200.RelPermalink }} 1200w, {{ $res.RelPermalink }} {{ $res.Width }}w"
+    sizes="{{ $sizes }}"
+    alt="{{ $alt }}"
+    width="{{ $res.Width }}"
+    height="{{ $res.Height }}"
+    {{- if $lazy }} loading="lazy" decoding="async"{{- else }} fetchpriority="high" decoding="async"{{- end }}
+    class="resp-img">
+{{- else -}}
+  <img src="{{ $src }}" alt="{{ $alt }}" width="1600" height="1000"{{ if $lazy }} loading="lazy"{{ end }} class="resp-img">
+{{- end -}}

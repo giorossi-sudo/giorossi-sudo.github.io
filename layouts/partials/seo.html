@@ -1,0 +1,194 @@
+{{- $title := .Title -}}
+{{- $desc := .Description | default .Site.Params.description -}}
+{{- if .IsHome -}}
+  {{- $title = .Site.Title -}}
+{{- else if eq .Kind "404" -}}
+  {{- $title = "Pagina non trovata (404) | giorossi-sudo.tech" -}}
+  {{- $desc = "La pagina richiesta non è stata trovata su giorossi-sudo.tech. Torna alla home o esplora gli articoli su Linux, Hyprland e XFCE4." -}}
+{{- else if .Params.seo_title -}}
+  {{- $title = .Params.seo_title -}}
+{{- else -}}
+  {{- $title = printf "%s | giorossi-sudo.tech" .Title -}}
+{{- end -}}
+{{- $url := .Permalink -}}
+{{- if eq .Kind "404" -}}
+  {{- $url = printf "%s404.html" .Site.BaseURL -}}
+{{- end -}}
+{{- $ogType := "website" -}}
+{{- if and (eq .Section "articoli") .IsPage -}}
+  {{- $ogType = "article" -}}
+{{- else if eq .RelPermalink "/chi-sono.html" -}}
+  {{- $ogType = "profile" -}}
+{{- end -}}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+{{- if or (eq .Kind "404") .Params.noindex }}
+<meta name="robots" content="noindex">
+{{- end }}
+<meta name="theme-color" content="{{ .Site.Params.themeColor }}">
+<link rel="canonical" href="{{ $url }}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:url" content="{{ $url }}">
+<meta property="og:image" content="{{ .Site.Params.ogImage }}">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ .Site.Params.ogImage }}">
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://giorossi-sudo.tech/#website",
+      "name": {{ $title | jsonify | safeJS }},
+      "url": "https://giorossi-sudo.tech/",
+      "description": {{ $desc | jsonify | safeJS }},
+      "inLanguage": "it-IT",
+      "author": {
+        "@id": "https://giorossi-sudo.tech/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://giorossi-sudo.tech/#person",
+      "name": "giorossi-sudo",
+      "url": "https://giorossi-sudo.tech/",
+      "sameAs": [
+        "https://github.com/giorossi-sudo"
+      ]
+    }
+  ]
+}
+</script>
+{{- else if eq .RelPermalink "/chi-sono.html" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://giorossi-sudo.tech/chi-sono.html",
+      "name": {{ $title | jsonify | safeJS }},
+      "url": "https://giorossi-sudo.tech/chi-sono.html",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "giorossi-sudo",
+        "url": "https://giorossi-sudo.tech/",
+        "sameAs": [
+          "https://github.com/giorossi-sudo"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://giorossi-sudo.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Chi sono",
+          "item": "https://giorossi-sudo.tech/chi-sono.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{{- else if and (eq .Section "articoli") .IsSection }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://giorossi-sudo.tech/articoli/",
+      "name": {{ $title | jsonify | safeJS }},
+      "description": {{ $desc | jsonify | safeJS }},
+      "url": "https://giorossi-sudo.tech/articoli/",
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://giorossi-sudo.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articoli",
+          "item": "https://giorossi-sudo.tech/articoli/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{{- else if and (eq .Section "articoli") .IsPage }}
+{{- $pub := .Date.Format "2006-01-02" -}}
+{{- $mod := (.Lastmod | default .Date).Format "2006-01-02" -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": {{ .Title | jsonify | safeJS }},
+      "description": {{ $desc | jsonify | safeJS }},
+      "datePublished": {{ $pub | jsonify | safeJS }},
+      "dateModified": {{ $mod | jsonify | safeJS }},
+      "author": {
+        "@type": "Person",
+        "name": "giorossi-sudo",
+        "url": "https://giorossi-sudo.tech/",
+        "sameAs": [
+          "https://github.com/giorossi-sudo"
+        ]
+      },
+      "image": "https://giorossi-sudo.tech/assets/og-image.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": {{ $url | jsonify | safeJS }}
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://giorossi-sudo.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articoli",
+          "item": "https://giorossi-sudo.tech/articoli/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ .Title | jsonify | safeJS }},
+          "item": {{ $url | jsonify | safeJS }}
+        }
+      ]
+    }
+  ]
+}
+</script>
+{{- end }}

@@ -1,0 +1,28 @@
+<aside class="article-meta-aside" aria-label="Metadati dell'articolo">
+  <div class="meta-group">
+    <span class="meta-label">Categoria</span>
+    <span class="meta-value">{{ .Params.categoria }}</span>
+  </div>
+  <div class="meta-group">
+    <span class="meta-label">Pubblicato il</span>
+    <span class="meta-value"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Params.date_display }}</time></span>
+  </div>
+  {{- if .Params.lastmod_display }}
+  <div class="meta-group">
+    <span class="meta-label">{{ .Params.lastmod_prefix | default "Aggiornato il" }}</span>
+    <span class="meta-value">
+      {{- if .Params.lastmod_iso -}}
+      <time datetime="{{ .Params.lastmod_iso }}">{{ .Params.lastmod_display }}</time>
+      {{- else -}}
+      {{ .Params.lastmod_display }}
+      {{- end -}}
+    </span>
+  </div>
+  {{- end }}
+  {{- with .Params.tags }}
+  <div class="meta-group">
+    <span class="meta-label">Argomenti</span>
+    <span class="meta-value">{{ delimit . " · " }}</span>
+  </div>
+  {{- end }}
+</aside>

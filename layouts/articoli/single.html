@@ -1,0 +1,63 @@
+{{ define "main" }}
+<div class="container page-wrap">
+  <div class="back-nav">
+    <a href="/articoli/" class="back-link">&larr; Tutti gli articoli</a>
+    <span aria-hidden="true">&bull;</span>
+    <a href="/#progetti" class="back-link">Torna ai progetti</a>
+  </div>
+
+  <article>
+    <header class="article-header-grid">
+      <div>
+        <div class="eyebrow">{{ .Params.eyebrow | default .Params.categoria }}</div>
+        <p class="article-dates">
+          Pubblicato il <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Params.date_display }}</time> &middot; {{ .Params.lastmod_prefix | default "Aggiornato il" }} {{ if .Params.lastmod_iso }}<time datetime="{{ .Params.lastmod_iso }}">{{ .Params.lastmod_display }}</time>{{ else }}{{ .Params.lastmod_display }}{{ end }}
+        </p>
+        <h1 class="article-title">{{ .Title }}</h1>
+        {{- with .Params.subtitle }}
+        <p class="article-subtitle">{{ . | safeHTML }}</p>
+        {{- end }}
+      </div>
+      {{ partial "meta-articolo.html" . }}
+    </header>
+
+    {{- if .Params.hero_image }}
+    <figure class="article-hero-figure">
+      {{ partial "img.html" (dict "src" .Params.hero_image "alt" .Params.hero_alt "lazy" false "sizes" "(min-width: 860px) 1040px, 100vw") }}
+    </figure>
+    {{- end }}
+
+    <div class="article-body">
+      {{ .Content }}
+
+      {{- if .Params.repo_url }}
+      <div class="callout-box">
+        <h3>Il codice</h3>
+        <p>{{ .Params.repo_text | safeHTML }}</p>
+        <div>
+          <a href="{{ .Params.repo_url }}" target="_blank" rel="noopener noreferrer" class="line-link">{{ .Params.repo_label }} &rarr;</a>
+        </div>
+        {{- with .Params.repo_credits }}
+        <p class="callout-credits">{{ . | safeHTML }}</p>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+
+    {{- with .Params.related }}
+    <section aria-labelledby="vedi-anche-heading" class="related-section">
+      <h2 id="vedi-anche-heading" class="related-title">Vedi anche</h2>
+      <div class="related-grid">
+        {{- range . }}
+        <a href="{{ .url }}" class="related-card">
+          <div class="related-card-cat">{{ .cat }}</div>
+          <h3 class="related-card-title">{{ .title }} &rarr;</h3>
+          <p class="related-card-desc">{{ .desc }}</p>
+        </a>
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+  </article>
+</div>
+{{ end }}
