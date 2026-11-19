@@ -7,7 +7,7 @@ disableKinds = ["taxonomy", "term", "RSS"]
 disableHugoGeneratorInject = true
 
 [params]
-  description = "Studente di Informatica e appassionato di Linux: anteprime e approfondimenti dei miei progetti, tra dotfiles, desktop leggeri e configurazioni."
+  description = "Studente di Informatica e appassionato di Linux: anteprime e note sui miei progetti, dai dotfiles ai desktop leggeri."
   author = "giorossi-sudo"
   github = "https://github.com/giorossi-sudo"
   ogImage = "https://giorossi-sudo.tech/assets/og-image.png"

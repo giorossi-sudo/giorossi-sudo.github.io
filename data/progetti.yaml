@@ -1,6 +1,6 @@
 - id: fedora-hyprland
   title: "Fedora Hyprland Dotfiles"
-  description: "Una configurazione completa per Hyprland, un ambiente desktop a finestre affiancate che si controlla soprattutto da tastiera, adattata a Fedora Linux e a un portatile ASUS Zenbook 14 OLED. Parte dal lavoro di Riccardo Palombo per Arch e lo porta su Fedora, risolvendo i conflitti che impedivano di tenere installato anche GNOME. Uno script installa pacchetti e impostazioni in un solo passaggio."
+  description: "Una configurazione completa per Hyprland, il gestore a finestre affiancate pensato per essere controllato soprattutto da tastiera, adattata a Fedora Linux e a un portatile ASUS Zenbook 14 OLED. Riprende il lavoro di Riccardo Palombo su Arch Linux e risolve i conflitti che impedivano di tenere installato anche GNOME. Pacchetti e impostazioni si installano con un solo script."
   tags:
     - "Hyprland"
     - "Fedora"
@@ -17,7 +17,7 @@
 
 - id: xfce-dotfiles
   title: "XFCE Dotfiles per PC datati"
-  description: "Una configurazione del desktop XFCE4 su Arch Linux pensata per computer datati e poco potenti, nata per un HP compact con monitor collegato in VGA. Corregge i difetti tipici dello schermo analogico, come i pulsanti delle finestre tagliati sul bordo, e alleggerisce il carico sul processore per mantenere il sistema fluido. Parte dal tema del team di EndeavourOS e uno script la installa in un solo passaggio."
+  description: "Una configurazione di XFCE4 su Arch Linux pensata per computer vecchi e poco potenti, nata per un HP compact collegato a un monitor VGA. Sistema i problemi tipici dello schermo analogico, come i pulsanti delle finestre tagliati sul bordo destro, e alleggerisce il carico sulla CPU per tenere il sistema reattivo. Parte dal tema del team di EndeavourOS e si applica con un solo script."
   tags:
     - "XFCE4"
     - "Arch Linux"

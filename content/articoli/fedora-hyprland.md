@@ -14,13 +14,13 @@ tags:
   - "Hyprland"
   - "Fedora"
   - "Waybar"
-subtitle: "Un ambiente a finestre affiancate per Fedora Linux, progettato per convivere stabilmente con GNOME e calibrato per schermi moderni ad alta definizione."
-list_summary: 'Un ambiente a finestre affiancate per Fedora Linux basato su Hyprland 0.57+ (Lua) e doppia barra Waybar, progettato per convivere stabilmente con GNOME senza alterare <code>/etc/environment</code> e calibrato per il display OLED 2.8K dell''ASUS Zenbook 14.'
+subtitle: "Un ambiente a finestre affiancate per Fedora Linux che convive senza problemi con GNOME ed è regolato per schermi ad alta definizione."
+list_summary: 'Configurazione per Fedora Linux con Hyprland 0.57+ (Lua) e doppia barra Waybar: convive con GNOME senza toccare <code>/etc/environment</code> ed è tarata per il display OLED 2.8K dell''ASUS Zenbook 14.'
 hero_image: "images/hyprland-desktop.webp"
 hero_alt: "Desktop Hyprland su Fedora con doppia barra Waybar, Firefox sul repository GitHub e terminali Foot affiancati"
 repo_url: "https://github.com/giorossi-sudo/fedora-hyprland-dotfiles"
 repo_label: "Apri il repository fedora-hyprland-dotfiles su GitHub"
-repo_text: "Tutti i file di configurazione, lo script di installazione automatizzato e i dettagli completi sono pubblicati e liberamente consultabili su GitHub."
+repo_text: "Tutti i file di configurazione, lo script di installazione e le note complete sono su GitHub."
 repo_credits: 'Configurazione originale e crediti a <a href="https://github.com/RiccardoPP/dotfiles" target="_blank" rel="noopener noreferrer">Riccardo Palombo (RiccardoPP/dotfiles)</a>.'
 related:
   - url: "/articoli/xfce-dotfiles.html"
@@ -35,55 +35,51 @@ related:
 
 ## Cos'è e perché esiste
 
-Hyprland è un gestore di finestre per Linux che organizza le applicazioni a griglia, affiancandole automaticamente sullo schermo senza sovrapporle. Si controlla prevalentemente con scorciatoie da tastiera, offrendo un flusso di lavoro rapido e privo di distrazioni visive.
+Hyprland è un gestore di finestre per Linux che dispone le applicazioni a griglia, affiancandole sullo schermo senza sovrapporle. Si usa quasi solo con scorciatoie da tastiera, così si lavora veloci e senza elementi inutili sullo schermo.
 
-Questo progetto nasce come adattamento per **Fedora Linux** (versioni 40, 41, 42 e 44) della configurazione di Riccardo Palombo, ideata in origine per Arch Linux su computer ThinkPad.
-
-Questo adattamento permette di provare Hyprland senza rinunciare a GNOME: le due sessioni coesistono e si sceglie quale avviare dalla schermata di login.
+Questa configurazione adatta per Fedora Linux (versioni 40, 41, 42 e 44) i dotfiles di Riccardo Palombo, pensati in origine per Arch Linux su ThinkPad. L'idea è poter provare Hyprland senza togliere GNOME: le due sessioni restano entrambe disponibili e si sceglie quale avviare dalla schermata di login.
 
 ## Cosa cambia rispetto alla configurazione originale
 
-Il passaggio dall'ambiente di origine a Fedora ha richiesto modifiche precise per evitare conflitti e adattarsi al nuovo hardware:
+Per portare il setup su Fedora e adattarlo al nuovo hardware ho dovuto cambiare diverse cose:
 
-### Convivenza pacifica con GNOME
+### Convivenza con GNOME
 
-Su Arch Linux alcune variabili globali venivano scritte in `/etc/environment`, ma su Fedora questo corrompe l'avvio della sessione GNOME tramite GDM. In questo progetto il file `/etc/environment` non viene toccato: le variabili necessarie vengono caricate unicamente nella sessione Hyprland con `hl.env`, lasciando GNOME del tutto inalterato.
+Su Arch Linux alcune variabili globali finivano in `/etc/environment`, ma su Fedora quella scelta rompe l'avvio di GNOME tramite GDM. Qui invece `/etc/environment` resta intatto: le variabili che servono vengono caricate solo dentro la sessione Hyprland tramite `hl.env`, così GNOME continua a partire senza problemi.
 
-### Adattamento all'ecosistema Fedora
+### Pacchetti e strumenti su Fedora
 
-Tutti i pacchetti di Arch e AUR sono stati convertiti per gli strumenti di Fedora. L'installazione sfrutta `dnf` e attiva un repository COPR per il menu delle applicazioni `tofi`. I binari Polkit in `/usr/libexec/` gestiscono l'autenticazione con un fallback compatibile con GNOME, MATE e KDE. Nella shell viene inoltre impiegato lo strumento moderno `eza` al posto del deprecato `exa`.
+Ho convertito i pacchetti di Arch e AUR negli equivalenti per Fedora, usando `dnf` e attivando un repository COPR per il launcher `tofi`. I binari Polkit in `/usr/libexec/` gestiscono l'autenticazione con un fallback compatibile con GNOME, MATE e KDE. Nella shell uso `eza` al posto di `exa`, che ormai è deprecato.
 
 ### Ottimizzazione per ASUS Zenbook 14 OLED
 
-La grafica è calibrata per lo schermo OLED 2.8K (**2880×1800 a 90Hz**) con scala 1.6, garantendo elementi definiti e testi nitidi. Sul touchpad sono attivati scorrimento naturale, tocco per il clic e gesture a tre dita per cambiare workspace, eliminando le direttive specifiche del TrackPoint ThinkPad.
+Lo schermo è regolato sul pannello OLED 2.8K (2880×1800 a 90Hz) con fattore di scala 1.6, così testi e icone restano nitidi. Sul touchpad ho attivato scorrimento naturale, tocco per il clic e gesture a tre dita per cambiare workspace, rimuovendo le regole specifiche del TrackPoint ThinkPad.
 
 ### Hyprland 0.57+ (Lua) e barre Waybar stabili
 
-Con Hyprland 0.57 il compositor adotta il parser nativo in Lua: la configurazione risiede in `hyprland.lua`, mantenendo il file `hyprland.conf` come riferimento compatibile. Le due barre Waybar sono gestite con `systemd-run --user`, garantendo persistenza ed evitando barre duplicate ai reload.
+Da Hyprland 0.57 il compositor usa il parser nativo in Lua: la configurazione sta in `hyprland.lua`, con `hyprland.conf` lasciato come riferimento compatibile. Le due barre Waybar vengono avviate tramite `systemd-run --user`, in modo che restino attive e non si duplichino quando ricarichi la configurazione.
 
 ## Come si usa
 
-Mettere in funzione la configurazione è semplice, sia nell'installazione iniziale sia nell'utilizzo quotidiano.
-
 ### Installazione rapida
 
-Non servono configurazioni manuali complesse. Basta clonare il repository sul proprio computer ed eseguire lo script di installazione:
+Clona il repository sul tuo computer ed esegui lo script di installazione:
 
 <div class="code-block"><code>git clone https://github.com/giorossi-sudo/fedora-hyprland-dotfiles.git<br>
 cd fedora-hyprland-dotfiles<br>
 chmod +x install.sh<br>
 ./install.sh</code></div>
 
-Lo script gestisce tutto in automatico: installa i pacchetti necessari con `dnf`, abilita COPR per `tofi`, installa i font JetBrains Mono e FontAwesome, posiziona le configurazioni in `~/.config/`, copia lo sfondo in `~/Pictures/` e aggiunge alias comodi nella shell.
+Lo script fa tutto da solo: installa i pacchetti con `dnf`, abilita il COPR per `tofi`, installa i font JetBrains Mono e FontAwesome, copia le configurazioni in `~/.config/`, mette lo sfondo in `~/Pictures/` e aggiunge qualche alias comodo nella shell.
 
 ### Cambio di sessione dal login
 
-Dopo l'installazione è possibile passare liberamente da GNOME a Hyprland:
+Dopo l'installazione puoi passare da GNOME a Hyprland e viceversa:
 
-1. Effettua il **Logout** dalla sessione attiva.
+1. Fai Logout dalla sessione attiva.
 2. Nella schermata di login GDM, seleziona il tuo utente.
-3. Clicca sull'icona a ingranaggio **⚙** in basso a destra.
-4. Scegli **Hyprland** oppure **GNOME**.
+3. Clicca sull'icona a ingranaggio ⚙ in basso a destra.
+4. Scegli Hyprland oppure GNOME.
 5. Inserisci la password e accedi.
 
-Per chi collega un monitor esterno tradizionale a 1080p, basta impostare scala 1.0 e risoluzione preferred nel file `~/.config/hypr/hyprland.lua`.
+Se colleghi un monitor esterno tradizionale a 1080p, imposta scala 1.0 e risoluzione preferred nel file `~/.config/hypr/hyprland.lua`.
