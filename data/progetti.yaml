@@ -12,7 +12,7 @@
     - url: "/articoli/fedora-hyprland.html"
       label: "Approfondisci →"
   image: "images/hyprland-desktop.webp"
-  image_alt: "Desktop Hyprland su Fedora con barre Waybar in alto e in basso"
+  image_alt: "Desktop Hyprland su Fedora con doppia barra Waybar, Firefox sul repository GitHub e terminali Foot affiancati"
   lazy: false
 
 - id: xfce-dotfiles

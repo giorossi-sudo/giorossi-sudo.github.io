@@ -2,13 +2,14 @@
 title: "Fedora Hyprland Dotfiles"
 description: "Configurazione di Hyprland per Fedora Linux: convivenza con GNOME, calibrazione per display OLED ASUS Zenbook 14 e guida all'installazione rapida."
 date: 2026-11-07T10:00:00+01:00
-lastmod: 2026-11-10T10:00:00+01:00
+lastmod: 2026-11-19T11:17:00+01:00
 url: "/articoli/fedora-hyprland.html"
 categoria: "Guida e approfondimento"
 eyebrow: "Guida e approfondimento"
 date_display: "7 novembre 2026"
-lastmod_prefix: "Aggiornato a"
-lastmod_display: "novembre 2026"
+lastmod_prefix: "Aggiornato il"
+lastmod_display: "19 novembre 2026"
+lastmod_iso: "2026-11-19"
 tags:
   - "Hyprland"
   - "Fedora"
@@ -16,7 +17,7 @@ tags:
 subtitle: "Un ambiente a finestre affiancate per Fedora Linux, progettato per convivere stabilmente con GNOME e calibrato per schermi moderni ad alta definizione."
 list_summary: 'Un ambiente a finestre affiancate per Fedora Linux basato su Hyprland 0.57+ (Lua) e doppia barra Waybar, progettato per convivere stabilmente con GNOME senza alterare <code>/etc/environment</code> e calibrato per il display OLED 2.8K dell''ASUS Zenbook 14.'
 hero_image: "images/hyprland-desktop.webp"
-hero_alt: "Desktop Hyprland su Fedora con barre Waybar in alto e in basso"
+hero_alt: "Desktop Hyprland su Fedora con doppia barra Waybar, Firefox sul repository GitHub e terminali Foot affiancati"
 repo_url: "https://github.com/giorossi-sudo/fedora-hyprland-dotfiles"
 repo_label: "Apri il repository fedora-hyprland-dotfiles su GitHub"
 repo_text: "Tutti i file di configurazione, lo script di installazione automatizzato e i dettagli completi sono pubblicati e liberamente consultabili su GitHub."
